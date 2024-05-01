@@ -32,7 +32,6 @@ function createCard(movie) {
   const movieTitle = movie.title;
   const overview = movie.overview;
   const vote_average = movie.vote_average.toFixed(2);
-  const backdrop_path = movie.backdrop_path;
 
   const movieCard = document.createElement("div");
   movieCard.classList.add("card");
