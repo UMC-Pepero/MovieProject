@@ -1,0 +1,145 @@
+@import "./reset.css";
+
+.movie-list {
+  width: 100%;
+  height: 100%;
+}
+
+.movieHeader {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.pageTitle {
+  font-size: 30px;
+  font-weight: 800;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+  margin-bottom: 100px;
+  color: rgb(255, 255, 255);
+}
+
+#movieIcon {
+  margin-top: 30px;
+  color: rgb(255, 255, 255);
+}
+
+.movieSearch-frame {
+  width: 100%;
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+}
+
+.movieSearch {
+  width: 300px;
+  height: 40px;
+  display: flex;
+  padding-left: 15px;
+  align-items: center;
+  border-radius: 50px;
+  border: 1px solid gray;
+}
+
+.card-flex {
+  width: 100%;
+  display: grid;
+  row-gap: 100px;
+  grid-gap: 100px;
+  column-gap: 50px;
+  place-items: center;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+@media screen and (min-width: 700px) {
+  .card-flex {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .card-flex {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .card-flex {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.movieCard {
+  width: 260px;
+  height: 350px;
+  position: relative;
+}
+
+.movieCard .posterImg {
+  width: 260px;
+  height: 350px;
+  border-radius: 20px;
+}
+
+.movieCard .card-body {
+  opacity: 0;
+  width: 260px;
+  height: 350px;
+  padding: 15px;
+  color: #fff;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.35s ease-in-out;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.movieCard:hover .card-body {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.movieCard .card-body .movieTitle {
+  font-size: 20px;
+  font-weight: 600;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  padding-bottom: 0.4em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.textFrame {
+  width: 100%;
+}
+
+.movieCard .card-body .movieOverview {
+  font-size: 15px;
+  overflow: hidden;
+  max-height: 9.8em;
+  text-align: center;
+  text-overflow: ellipsis;
+  margin-top: 20px;
+}
+
+.movieCard .card-body .movieVote {
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  margin-top: 40px;
+}
