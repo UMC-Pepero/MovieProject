@@ -4,11 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Comment</title>
+    <link rel="stylesheet" href="detail.css">
     <script type="module" src="comment.js"></script>
   </head>
   <body>
     <main>
-      <div class="title"></div>
+      <div class="review__title">
+        <h3>Review</h3>
+        <span>12233</span>
+      </div>
+      <ul class="comment__wrapper">
+        <li class="comment__box">
+          <img class="user-image" src="https://static.vecteezy.com/system/resources/thumbnails/005/276/776/small/logo-icon-person-on-white-background-free-vector.jpg"/>
+          <section class="comment-make__box">
+            <form class="id-password__box">
+              <input type="text" required placeholder="Username" />
+              <input type="password" required placeholder="Password" />
+              <button class="enter">Enter</button>
+            </form>
+            <form class="comment-write">
+              <input type="text" placeholder="감상평을 남겨주세요">
+              <button class="wrtie">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+            </form>
+          </section>
+        </li>
+        <li class="comment__box">
+            <img class="user-image" src="https://static.vecteezy.com/system/resources/thumbnails/005/276/776/small/logo-icon-person-on-white-background-free-vector.jpg"/>
+            <section class="comment">
+                <h4>Username</h4>
+                <p>Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+            </section>
+            <div class="rate">
+                <i class="fa-regular fa-thumbs-up"></i>
+                <span>55</span>
+            </div>
+        </li>
+      </div>
     </main>
+    <script
+      src="https://kit.fontawesome.com/748fe0d700.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
