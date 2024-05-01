@@ -74,20 +74,20 @@ searchInput.addEventListener("input", () => {
 });
 
 // scrollUP
-const scrollBtn = document.querySelector('.scrollBtn');
+const scrollBtn = document.querySelector(".scrollBtn");
 
-scrollBtn.addEventListener('click', (e) => {
+scrollBtn.addEventListener("click", (e) => {
   window.scrollTo({
     top: 0,
     left: 0,
-    behavior: 'smooth',
+    behavior: "smooth",
   });
 });
 
 // 모드 변경 저장
-document.addEventListener('DOMContentLoaded', (event) => {
-  const userTheme = localStorage.getItem('theme');
-  if (userTheme === 'dark') {
+document.addEventListener("DOMContentLoaded", (event) => {
+  const userTheme = localStorage.getItem("theme");
+  if (userTheme === "dark") {
     switchDarkTheme();
   } else {
     switchLightTheme();
@@ -95,11 +95,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 // 다크모드, 라이트모드 변경
-const switchBtn = document.getElementById('switchBtn');
-const html = document.getElementsByTagName('html')[0];
-const mode = 'dark';
+const switchBtn = document.getElementById("switchBtn");
+const html = document.getElementsByTagName("html")[0];
+const mode = "dark";
 
-switchBtn.addEventListener('click', () => {
+switchBtn.addEventListener("click", () => {
   if (html.classList.contains(mode)) {
     switchLightTheme();
   } else {
@@ -107,10 +107,10 @@ switchBtn.addEventListener('click', () => {
   }
 });
 const switchDarkTheme = () => {
-  localStorage.setItem('theme', 'dark');
+  localStorage.setItem("theme", "dark");
   html.classList.add(mode);
 };
 const switchLightTheme = () => {
-  localStorage.removeItem('theme', 'dark');
+  localStorage.removeItem("theme", "dark");
   html.classList.remove(mode);
 };
