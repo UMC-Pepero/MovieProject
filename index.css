@@ -154,8 +154,8 @@ body {
   height: 70px;
   border-radius: 50px;
   border: none;
-  background-color: black;
-  color: white;
+  background-color: var(--scroll-bg);
+  color: var(--scroll-ft);
   position: fixed;
   bottom: 30px;
   right: 20px;
@@ -166,7 +166,7 @@ body {
 /* switch style */
 #switchBtn {
   position: absolute;
-  top: 17px;
+  top: 15px;
   right: 30px;
   display: inline-block;
   width: 50px;
@@ -191,12 +191,14 @@ body {
   --input-bg: white;
   --input-ft: black;
   --h1-ft: white;
+  --scroll-bg: black;
+  --scroll-ft: white;
 }
 
 :root.dark {
-  --header-bg: #74a2a9;
+  --header-bg: rgb(32, 32, 32);
   --header-ft: rgb(234, 234, 234);
-  --body-bg: rgb(54, 54, 54);
+  --body-bg: rgba(0, 0, 0);
   --body-ft: rgb(234, 234, 234);
   --btn-bg: black;
   --btn-color: white;
@@ -206,4 +208,6 @@ body {
   --input-bg: black;
   --input-ft: rgb(186, 186, 186);
   --h1-ft: black;
+  --scroll-bg: white;
+  --scroll-ft: black;
 }
