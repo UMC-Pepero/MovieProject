@@ -114,6 +114,8 @@ main {
   height: fit-content;
   overflow-y: visible;
   height: 70px;
+  resize: none;
+  border: none;
   /* background-color: aliceblue; */
 }
 
