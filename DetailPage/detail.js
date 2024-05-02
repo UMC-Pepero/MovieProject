@@ -10,11 +10,108 @@ function getmovieData(id) {
   fetch(movieUrl)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      movieData(data);
     })
     .catch((error) => console.error("Error fetching movie details:", error));
 }
 
-function movieDetail(movie) {
-  console.log(movie);
+function movieData(movie) {
+  const detailFlex = document.getElementById("movieDetail");
+  const detailCard = movieDetailInfo(movie);
+  detailFlex.appendChild(detailCard);
 }
+
+function movieDetailInfo(detail) {
+  const movieImage = detail.poster_path;
+  const backImg = detail.backdrop_path;
+  const movieTitle = detail.title;
+  const runTime = detail.runtime;
+  const releaseDate = detail.release_date;
+  const genreNames = detail.genres.map((genre) => genre.name).join(", ");
+  const overview = detail.overview;
+  const vote_average = detail.vote_average.toFixed(2);
+
+  const detailCard = document.createElement("div");
+  detailCard.classList.add("detail");
+  detailCard.classList.add("detailCard");
+
+  detailCard.innerHTML = `
+    <article class="Detail">
+      <div class="background">
+        <div class="backFrame"></div>
+        <div class="detailImg">
+            <img class="backImg" src="https://image.tmdb.org/t/p/w300${backImg}" alt="poster"/>
+            <div class="mask"></div>
+            <div class="mask2"></div>
+        </div>
+      </div>
+      <div class="detail-body">
+        <div class="detailText">
+          <h1 class="detailTitle">${movieTitle}</h1>
+          <h2 class="runTime">${~~(runTime / 60)} 시간 ${runTime % 60} 분</h2>
+          <div class="detailInfo">
+            <p class="releaseDate">${releaseDate}</p>
+            <p>|</p>
+            <p class="genreNames">${genreNames}</p>
+          </div>
+          <div class="voteFlex">
+              <span class="starIcon material-symbols-outlined">kid_star</span>
+              <p class="detailVote">평점 : ${vote_average} 점</p>
+          </div>
+        </div>
+        <div class="overView-frame">
+          <img class="posterImg" src="https://image.tmdb.org/t/p/w300${movieImage}" alt="poster"/>
+          <p class="detailOverview">${overview}</p>
+        </div>
+      </div>
+    </article>
+`;
+  return detailCard;
+}
+
+function goHome() {
+  window.location.href = "../index.html";
+}
+
+// scrollUP
+const scrollBtn = document.querySelector(".scrollBtn");
+
+scrollBtn.addEventListener("click", (e) => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+});
+
+// 모드 변경 저장
+document.addEventListener("DOMContentLoaded", (event) => {
+  const userTheme = localStorage.getItem("theme");
+  if (userTheme === "dark") {
+    switchDarkTheme();
+  } else {
+    switchLightTheme();
+  }
+});
+
+// 다크모드, 라이트모드 변경
+const switchBtn = document.getElementById("switchBtn");
+const html = document.getElementsByTagName("html")[0];
+const mode = "dark";
+
+switchBtn.addEventListener("click", () => {
+  console.log("click");
+  if (html.classList.contains(mode)) {
+    switchLightTheme();
+  } else {
+    switchDarkTheme();
+  }
+});
+const switchDarkTheme = () => {
+  localStorage.setItem("theme", "dark");
+  html.classList.add(mode);
+};
+const switchLightTheme = () => {
+  localStorage.removeItem("theme", "dark");
+  html.classList.remove(mode);
+};
