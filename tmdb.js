@@ -22,6 +22,7 @@ function movieData(datas) {
 
     movieCard.addEventListener("click", () => {
       window.location.href = `./DetailPage/index.html?id=${movies.id}`;
+      window.location.href = `./DetailPage/sunmin.html?id=${movies.id}`;
     });
   });
 }
@@ -38,21 +39,21 @@ function createCard(movie) {
   movieCard.classList.add("movieCard");
 
   movieCard.innerHTML = `
-          <article class="cardFrame>
-            <div class="cardImg">
+    <article class="cardFrame>
+        <div class="cardImg">
 
-              <img src="https://image.tmdb.org/t/p/w300${movieImage}" class="posterImg" alt="poster"/>
+            <img src="https://image.tmdb.org/t/p/w300${movieImage}" class="posterImg" alt="poster"/>
+        </div>
+
+        <div class="card-body">
+            <h1 class="movieTitle">${movieTitle}</h1>
+            <div class="textFrame">
+            <p class="movieOverview">줄거리 요약<br>${overview}</p>
+            <p class="movieVote">평점<br>${vote_average} 점</p>
             </div>
-  
-            <div class="card-body">
-              <h1 class="movieTitle">${movieTitle}</h1>
-              <div class="textFrame">
-                <p class="movieOverview">줄거리 요약<br>${overview}</p>
-                <p class="movieVote">평점<br>${vote_average} 점</p>
-              </div>
-            </div>
-          <article>
-        `;
+        </div>
+    <article>
+`;
   return movieCard;
 }
 
