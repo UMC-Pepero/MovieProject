@@ -23,6 +23,7 @@ function movieData(movie) {
 
 function movieDetailInfo(detail) {
   const movieImage = detail.poster_path;
+  const backImg = detail.backdrop_path;
   const movieTitle = detail.title;
   const runTime = detail.runtime;
   const releaseDate = detail.release_date;
@@ -35,24 +36,39 @@ function movieDetailInfo(detail) {
   detailCard.classList.add("detailCard");
 
   detailCard.innerHTML = `
-    <article class="detailFrame">
-      <div class="gradientFrame">
-        <div class="gradient"></div>
+    <article class="Detail">
+      <div class="background">
+        <div class="backFrame"></div>
         <div class="detailImg">
-            <img src="https://image.tmdb.org/t/p/w300${movieImage}" class="posterImg" alt="poster"/>
+            <img class="backImg" src="https://image.tmdb.org/t/p/w300${backImg}" alt="poster"/>
+            <div class="mask"></div>
+            <div class="mask2"></div>
         </div>
       </div>
       <div class="detail-body">
-        <h1 class="detailTitle">${movieTitle}</h1>
-        <h2 class="runTime">${runTime}</h2>
-        <div class="detailInfo">
-          <p class="detailVote">${releaseDate}</p>
-          <p class="detailVote">${genreNames}</p>
+        <div class="detailText">
+          <h1 class="detailTitle">${movieTitle}</h1>
+          <h2 class="runTime">${runTime} 분</h2>
+          <div class="detailInfo">
+            <p class="releaseDate">${releaseDate}</p>
+            <p>|</p>
+            <p class="genreNames">${genreNames}</p>
+          </div>
+          <div class="voteFlex">
+              <span class="starIcon material-symbols-outlined">kid_star</span>
+              <p class="detailVote">평점 : ${vote_average} 점</p>
+          </div>
         </div>
-        <p class="detailVote">평점<br>${vote_average} 점</p>
-        <p class="detailOverview">${overview}</p>
+        <div class="overView-frame">
+          <img class="posterImg" src="https://image.tmdb.org/t/p/w300${movieImage}" alt="poster"/>
+          <p class="detailOverview">${overview}</p>
+        </div>
       </div>
     </article>
 `;
   return detailCard;
+}
+
+function goHome() {
+  window.location.href = "../index.html";
 }
