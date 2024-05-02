@@ -18,8 +18,8 @@
           class="user-image"
           src="https://static.vecteezy.com/system/resources/thumbnails/005/276/776/small/logo-icon-person-on-white-background-free-vector.jpg"
         />
-        <div class="comment-write__box">
-          <form class="id-password__box">
+        <form class="comment-write__box">
+          <div class="id-password__box">
             <input id="username" type="text" required placeholder="Username" />
             <input
               id="password"
@@ -27,15 +27,14 @@
               required
               placeholder="Password"
             />
-            <button class="enter">Enter</button>
-          </form>
-          <form class="comment-write hidden">
+          </div>
+          <div class="comment-write">
             <textarea id="write" placeholder="감상평을 남겨주세요."></textarea>
             <button class="wrtie-btn">
               <i class="fa-solid fa-pen-to-square fa-lg"></i>
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
       </section>
       <ul class="comment__wrapper">
         <!-- <li class="comment__box">
