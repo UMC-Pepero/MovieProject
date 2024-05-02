@@ -21,7 +21,7 @@ function movieData(datas) {
     cardFlex.appendChild(movieCard);
 
     movieCard.addEventListener("click", () => {
-      window.location.href = `./DetailPage/detail.html?id=${movies.id}`;
+      window.location.href = `./DetailPage/sunmin.html?id=${movies.id}`;
     });
   });
 }
