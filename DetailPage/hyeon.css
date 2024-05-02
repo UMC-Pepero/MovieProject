@@ -1,21 +1,5 @@
 @import "/reset.css";
 
-/* 폰트 */
-@font-face {
-  font-family: 'GmarketSansMedium';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
-    format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'ClimateCrisisKR-1979';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/ClimateCrisisKR-1979.woff2')
-    format('woff2');
-  font-weight: 900;
-  font-style: normal;
-}
-
 * {
   font-family: 'GmarketSansMedium';
 }
@@ -44,6 +28,10 @@
 #movieIcon {
   margin-top: 30px;
   color: rgb(255, 255, 255);
+}
+
+#container{
+  position: relative;
 }
 
 .movie-list {
@@ -167,6 +155,48 @@ p {
   mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
+/* 더보기 상세정보 */
+.moreInfoBtn {
+  position: absolute;
+  bottom: 190px;
+  right: 50px;
+  width: 50px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  z-index: 2;
+  color: rgb(183, 183, 183);
+}
+.moreInfoBtn p {
+  width: 40px;
+  margin-top: 7px;
+}
+.moreInfoText {
+  background-color: rgba(125, 125, 125, 0.234); 
+  font-size: 14px;
+  text-align: left;
+  position: absolute;
+  bottom: 20px;
+  right: 65px;
+  width: 25%;
+  padding: 5px 20px 10px 20px;
+  display: none;
+}
+.show {
+  display: block;
+  transition: all 0.5s ease-in-out;
+}
+.moreInfoText p{
+  margin-top: 0px;
+  line-height: 30px;
+  color: rgb(181, 181, 181);
+}
+.homepage {
+  position: inherit;
+  color: rgb(181, 181, 181);
+  margin-left: 10px;
+}
+
 
 /* a링크, 뒤로가기 */
 a {
@@ -225,7 +255,7 @@ a {
 }
 
 :root.dark {
-  --header-bg: #74a2a9;
+  --header-bg: black;
   --header-ft: rgb(234, 234, 234);
   --body-bg: rgb(54, 54, 54);
   --body-ft: rgb(234, 234, 234);
@@ -240,4 +270,9 @@ a {
   --input-bg: black;
   --input-ft: rgb(186, 186, 186);
   --h1-ft: black;
+}
+
+/* similar.js */
+.similarContainer {
+  background-color: black;
 }
