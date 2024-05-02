@@ -3,6 +3,8 @@ const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const commentInput = document.getElementById("write");
 
+// const movieId = getMovieIdFromURL(); // URL에서 영화 식별자를 가져오는 함수
+
 const handleSubmitForm = (event) => {
   event.preventDefault();
   // 입력된 이름, 댓글 내용 가져오기
