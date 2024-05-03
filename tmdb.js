@@ -62,6 +62,7 @@ function movieId(id) {
 }
 
 // 영화 검색
+
 const searchInput = document.getElementById("searchBar");
 searchInput.addEventListener("input", () => {
   const searchTerm = searchInput.value.toLowerCase();
@@ -71,11 +72,19 @@ searchInput.addEventListener("input", () => {
     const title = card.querySelector(".movieTitle").textContent.toLowerCase();
     card.style.display = title.includes(searchTerm) ? "block" : "none";
   });
+
+
   // 영화 검색 유효성 검사 (한글 입력 시 swal.fire) ㄱ-ㅎ|ㅏ-ㅣ|가-힣 -> 정규표현식으로 한글을 나타냄
-  if (/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(searchTerm)) {
-    swal.fire("영문으로 검색해주세요!");
-  }
+if (/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(searchTerm)) {
+  swal.fire({
+    text: "영문으로 검색해주세요!",
+    onAfterClose: () => {
+      searchInput.value = "";
+    }
+  });
+}
 });
+
 
 // scrollUP
 const scrollBtn = document.querySelector('.scrollBtn');
