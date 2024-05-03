@@ -1,7 +1,7 @@
 // Api 연결
 function tmdbApi() {
   const apiKey = "f5475cb87195d22e7fbee353e3247ba5";
-  const apiUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
+  const apiUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}&language=en-US&page=1`;
 
   fetch(apiUrl)
     .then((response) => response.json())
@@ -21,7 +21,7 @@ function movieData(datas) {
     cardFlex.appendChild(movieCard);
 
     movieCard.addEventListener("click", () => {
-      movieId(movies.id);
+      window.location.href = `./DetailPage/detail.html?id=${movies.id}`;
     });
   });
 }
@@ -38,21 +38,21 @@ function createCard(movie) {
   movieCard.classList.add("movieCard");
 
   movieCard.innerHTML = `
-          <article class="cardFrame>
-            <div class="cardImg">
-              <img src="https://image.tmdb.org/t/p/w300${movieImage}" class="posterImg" alt="poster"/>
+    <article class="cardFrame>
+        <div class="cardImg">
+
+            <img src="https://image.tmdb.org/t/p/w300${movieImage}" class="posterImg" alt="poster"/>
+        </div>
+
+        <div class="card-body">
+            <h1 class="movieTitle">${movieTitle}</h1>
+            <div class="textFrame">
+            <p class="movieOverview">줄거리 요약<br>${overview}</p>
+            <p class="movieVote">평점<br>${vote_average} 점</p>
             </div>
-  
-            <div class="card-body">
-              <h1 class="movieTitle">${movieTitle}</h1>
-              <div class="textFrame">
-                <p class="movieOverview">줄거리 요약<br>${overview}</p>
-                <p class="movieVote">평점<br>${vote_average} 점</p>
-              </div>
-            </div>
-          <article>
-  
-        `;
+        </div>
+    <article>
+`;
   return movieCard;
 }
 
