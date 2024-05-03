@@ -1,4 +1,4 @@
-@import "/reset.css";
+@import "./reset.css";
 
 main {
   /* width: 100vw; */
@@ -160,6 +160,33 @@ main {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical; */
+}
+
+.userInfo {
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  padding: 5px;
+  font-size: 20px;
+  color: rgb(255, 161, 19);
+}
+
+.stars {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.starsIcon {
+  width: 20px;
+  height: 20px;
+  margin-left: 30px;
+  color: rgb(232, 139, 0);
 }
 
 .rate {
