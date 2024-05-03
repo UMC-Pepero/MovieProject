@@ -28,7 +28,7 @@ function movieDetailInfo(detail) {
   const movieTitle = detail.title;
   const runTime = detail.runtime;
   const releaseDate = detail.release_date;
-  const genreNames = detail.genres.map((genre) => genre.name).join(", ");
+  const genreNames = detail.genres.map((genre) => genre.name).join(" • ");
   const overview = detail.overview;
   const vote_average = detail.vote_average.toFixed(2);
 
@@ -52,7 +52,7 @@ function movieDetailInfo(detail) {
           <h2 class="runTime">${~~(runTime / 60)} 시간 ${runTime % 60} 분</h2>
           <div class="detailInfo">
             <p class="releaseDate">${releaseDate}</p>
-            <p>|</p>
+            <p class="bar">|</p>
             <p class="genreNames">${genreNames}</p>
           </div>
           <div class="voteFlex">
@@ -122,8 +122,6 @@ const commentForm = document.querySelector(".comment-write__box");
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const commentInput = document.getElementById("write");
-
-// const movieId = getMovieIdFromURL(); // URL에서 영화 식별자를 가져오는 함수
 
 function loadComments(movieId) {
   const comments = getComments(movieId);
