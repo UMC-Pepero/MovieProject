@@ -59,7 +59,7 @@
     <main>
       <div class="review__title">
         <h3>Review</h3>
-        <span>12233</span>
+        <span class="comments__length"></span>
       </div>
 
       <section class="comment-make__box">
@@ -69,8 +69,16 @@
         />
         <form class="comment-write__box">
           <div class="id-password__box">
-            <input id="username" type="text" required placeholder="Username" />
             <input
+              class="userName"
+              id="username"
+              type="text"
+              maxlength="10"
+              required
+              placeholder="Username"
+            />
+            <input
+              class="password"
               id="password"
               type="password"
               required
@@ -87,6 +95,7 @@
           </div>
           <div class="comment-write">
             <textarea
+              class="write"
               id="write"
               placeholder="감상평을 남겨주세요."
               required
