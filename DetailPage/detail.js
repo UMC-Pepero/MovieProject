@@ -137,6 +137,8 @@ function getComments(movieId) {
   return savedComments ? JSON.parse(savedComments) : [];
 }
 
+let number = 0; //uuid js
+
 const handleSubmitForm = (event) => {
   event.preventDefault();
 
@@ -144,6 +146,8 @@ const handleSubmitForm = (event) => {
   const password = passwordInput.value;
   const comment = commentInput.value;
   const rating = selectedRating;
+  const indexBox = document.querySelector(".comment__box");
+  // const index = indexBox.dataset["index"];
 
   usernameInput.value = "";
   passwordInput.value = "";
@@ -154,6 +158,7 @@ const handleSubmitForm = (event) => {
     password: password,
     review: comment,
     rating: rating,
+    index: number++,
   };
 
   //로컬스토리지 아이템 갯수 -> 총 댓글 수에 반영하기
@@ -172,9 +177,16 @@ const generateComment = (comments) => {
   const commentBox = document.querySelector(".comment__wrapper");
   commentBox.innerHTML = "";
   let commentDrawn = getComments(movieId, comments);
+  // 함수 실행을 통한 재랜더링 필요
+
   commentDrawn.forEach((element) => {
+    // const test = () => {
+    //   localStorage.getItem(`comments_${movieId}`);
+    //   localStorage.removeItem(`comments_${movieId}.review`);
+    // };
+
     commentBox.innerHTML += `
-      <li class="comment__box">
+      <li class="comment__box" data-index="${element.index}">
         <img
           class="user-image"
           src="https://static.vecteezy.com/system/resources/thumbnails/005/276/776/small/logo-icon-person-on-white-background-free-vector.jpg"
@@ -189,8 +201,8 @@ const generateComment = (comments) => {
           </div>
           <p>${element.review}</p>
           <div class="edit-delete" >
-            <button id="edit"><i class="fa-solid fa-pen fa-lg"></i></button>
-            <button id="delete"><i class="fa-regular fa-trash-can fa-lg"></i></i></button>
+            <button class="edit"><i class="fa-solid fa-pen fa-lg"></i></button>
+            <button class="delete" ><i class="fa-regular fa-trash-can fa-lg"></i></i></button>
           </div>
         </section>
         <div class="rate">
@@ -199,6 +211,29 @@ const generateComment = (comments) => {
         </div>
       </li>`;
   });
+  // localStorage.removeItem(comments_${movieId})
+
+  //댓글 삭제하기
+  const deleteComment = (event) => {
+    const li =
+      event.target.parentElement.parentElement.parentElement.parentElement;
+    li.remove();
+    const indexBox = document.querySelector(".comment__box");
+    const deleteIndex = indexBox.dataset["index"];
+
+    const newComments = [];
+    commentDrawn.forEach((element) => {
+      if (element.dataset["index"] !== deleteIndex) {
+        newComments.push(element);
+      }
+    });
+    localStorage.setItem(comments, newComments);
+  };
+
+  const deleteBtn = document.querySelectorAll(".delete");
+  deleteBtn.forEach((element, index) =>
+    element.addEventListener("click", deleteComment)
+  );
 };
 
 // 4. 페이지가 로드될 때 기존 댓글 불러오기
@@ -236,5 +271,4 @@ const highlightStars = (value) => {
   });
 };
 
-//댓글 삭제하기
 //댓글 수정하기
