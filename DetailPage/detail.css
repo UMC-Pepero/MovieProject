@@ -1,4 +1,4 @@
-@import "./reset.css";
+@import "/reset.css";
 
 body {
   background-color: var(--body-bg);
@@ -115,6 +115,7 @@ body {
 
 .runTime {
   font-size: 18px;
+  color: var(--detail-ft-gray);
 }
 
 .detailInfo {
@@ -123,10 +124,16 @@ body {
 
 .releaseDate {
   margin-right: 20px;
+  color: var(--detail-ft-gray);
 }
 
 .genreNames {
   margin-left: 20px;
+  color: var(--detail-ft-gray);
+}
+
+.bar {
+  color: var(--detail-ft-gray);
 }
 
 .voteFlex {
@@ -164,6 +171,7 @@ body {
   display: flex;
   text-align: center;
   align-items: center;
+  color: var(--detail-ft-gray);
 }
 
 @media screen and (max-width: 660px) {
@@ -196,6 +204,7 @@ body {
   background-color: var(--btn-bg);
   color: var(--btn-color);
   cursor: pointer;
+  border: none;
 }
 
 /* dark mode style */
@@ -204,16 +213,20 @@ body {
   --header-ft: white;
   --body-bg: white;
   --body-ft: black;
+  --detail-ft-gray : rgb(199, 199, 199);
+  /* switch, scroll */
   --btn-bg: white;
   --btn-color: black;
-  --btn-border: white;
-  --card-bg: white;
-  --card-ft: black;
-  --input-bg: white;
-  --input-ft: black;
-  --h1-ft: white;
   --scroll-bg: black;
   --scroll-ft: white;
+  /* 리뷰 */
+  --rvtitoe-ft: black;
+  --rvboreder-bottom : rgba(0, 0, 0, 0.3);
+  --rvborder : rgba(0, 0, 0, 0.3);
+  --rvInput-bg : white;
+  --rvInput-ft : black;
+  --rvCmt-bg : #f7f7f7;
+  --rvCmt-ft : black;
 }
 
 :root.dark {
@@ -221,14 +234,17 @@ body {
   --header-ft: rgb(234, 234, 234);
   --body-bg: rgba(0, 0, 0);
   --body-ft: rgb(234, 234, 234);
+   /* switch, scroll */
   --btn-bg: black;
   --btn-color: white;
-  --btn-border: black;
-  --card-bg: rgba(0, 0, 0, 0.4);
-  --card-ft: rgb(186, 186, 186);
-  --input-bg: black;
-  --input-ft: rgb(186, 186, 186);
-  --h1-ft: black;
   --scroll-bg: white;
   --scroll-ft: black;
+  /* 리뷰 */
+  --rvtitoe-ft: white;
+  --rvboreder-bottom : rgba(237, 237, 237, 0.58);
+  --rvborder : rgba(237, 237, 237, 0.58);
+  --rvInput-bg : rgba(0, 0, 0, 0.507);
+  --rvInput-ft : white;
+  --rvCmt-bg : #5f5f5f;
+  --rvCmt-ft : white;
 }

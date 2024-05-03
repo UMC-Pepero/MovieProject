@@ -1,4 +1,5 @@
-@import "/reset.css";
+@import './reset.css';
+@import '/DetailPage/detail.css';
 
 main {
   /* width: 100vw; */
@@ -14,9 +15,10 @@ main {
   /* background-color: antiquewhite; */
   width: 100%;
   height: 5em;
-  border-bottom: 1.5px solid var(--dark-gray);
+  border-bottom: 1.5px solid var(--rvboreder-bottom);
   display: flex;
   align-items: center;
+  color: var(--rvtitoe-ft);
 }
 
 .review__title > h3 {
@@ -41,7 +43,7 @@ main {
 }
 
 .user-image:first-child {
-  border: 1px solid var(--dark-gray);
+  border: 1px solid var(--rvborder);
 }
 
 .user-image {
@@ -72,14 +74,15 @@ main {
   width: 150px;
   height: 25px;
   border-radius: 5px;
-  border: 1px solid var(--dark-gray);
+  border: 1px solid var(--rvborder);
+  background-color: var(--rvInput-bg);
   padding: 0px 10px;
 }
 
 #username::placeholder,
 #password::placeholder {
   padding-right: 10px;
-  color: black;
+  color: var(--rvInput-ft);
 }
 
 #username:focus,
@@ -97,14 +100,14 @@ main {
 }
 
 .comment-write {
-  background-color: white;
+  background-color: var(--rvInput-bg);
   width: 99%;
   height: 90px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
-  border: 1px solid var(--dark-gray);
+  border: 1px solid var(--rvborder);
   padding: 0px 15px 0px 10px;
   box-sizing: border-box;
 }
@@ -116,7 +119,11 @@ main {
   height: 70px;
   resize: none;
   border: none;
-  /* background-color: aliceblue; */
+  background-color: var(--rvInput-bg);
+}
+
+.fa-s {
+  color: var(--rvInput-ft);
 }
 
 /* (수정) 댓글 버튼이 너무 붙어있는 것 같아 조금 거리를 줬습니다. */
@@ -134,7 +141,7 @@ main {
 }
 
 .comment__box {
-  background-color: #f7f7f7;
+  background-color: var(--rvCmt-bg);
   width: 100%;
   height: max-content;
   display: flex;
@@ -149,7 +156,7 @@ main {
   height: auto;
   display: flex;
   flex-direction: column;
-  gap: 0.8em;
+  gap: 1.0em;
 }
 
 .comment > h4 {
@@ -171,6 +178,20 @@ main {
   height: 20px;
   display: flex;
   align-items: center;
+}
+
+.userInfo > h4 {
+  font-size: 1.2em;
+  font-weight: 600;
+  width: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.star {
+  padding: 5px;
+  font-size: 20px;
+  color: rgb(255, 161, 19);
 }
 
 .stars {
@@ -198,6 +219,11 @@ main {
   gap: 1em;
   padding-top: 20px;
   box-sizing: border-box;
+}
+
+.edit-delete {
+  display: flex;
+  gap: 10px;
 }
 
 .hidden {

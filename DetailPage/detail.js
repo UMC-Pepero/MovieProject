@@ -28,7 +28,7 @@ function movieDetailInfo(detail) {
   const movieTitle = detail.title;
   const runTime = detail.runtime;
   const releaseDate = detail.release_date;
-  const genreNames = detail.genres.map((genre) => genre.name).join(", ");
+  const genreNames = detail.genres.map((genre) => genre.name).join(" • ");
   const overview = detail.overview;
   const vote_average = detail.vote_average.toFixed(2);
 
@@ -52,7 +52,7 @@ function movieDetailInfo(detail) {
           <h2 class="runTime">${~~(runTime / 60)} 시간 ${runTime % 60} 분</h2>
           <div class="detailInfo">
             <p class="releaseDate">${releaseDate}</p>
-            <p>|</p>
+            <p class="bar">|</p>
             <p class="genreNames">${genreNames}</p>
           </div>
           <div class="voteFlex">
@@ -123,15 +123,15 @@ const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const commentInput = document.getElementById("write");
 
-// const movieId = getMovieIdFromURL(); // URL에서 영화 식별자를 가져오는 함수
-
 function loadComments(movieId) {
   const comments = getComments(movieId);
   generateComment(comments);
 }
+
 function saveComments(movieId, comments) {
   localStorage.setItem(`comments_${movieId}`, JSON.stringify(comments));
 }
+
 function getComments(movieId) {
   const savedComments = localStorage.getItem(`comments_${movieId}`);
   return savedComments ? JSON.parse(savedComments) : [];
@@ -176,11 +176,15 @@ const generateComment = (comments) => {
         />
         <section class="comment">
           <div class="userInfo">
-            <h4>${element.user}</h4>
-            <span class="starsIcon material-symbols-outlined" style="font-size: 18px"">kid_star</span>
-            <span class="stars">${element.rating}</span>
+              <h4>${element.user}</h4>
+              <span class="starsIcon material-symbols-outlined" style="font-size: 18px"">kid_star</span>
+              <span class="stars">${element.rating}</span>
           </div>
           <p>${element.review}</p>
+          <div class="edit-delete" >
+            <button id="edit"><i class="fa-solid fa-pen fa-lg"></i></button>
+            <button id="delete"><i class="fa-regular fa-trash-can fa-lg"></i></i></button>
+          </div>
         </section>
         <button class="rate" onclick='count("plus")' value = '+'>
           <i class="fa-regular fa-thumbs-up fa-lg"></i>
@@ -240,3 +244,7 @@ function count(type) {
   // 결과 출력
   resultElement.innerText = number;
 }
+//댓글 삭제하기
+//댓글 수정하기
+//로컬스토리지 아이템 갯수 -> 총 댓글 수에 반영하기
+const commentLength = window.localStorage.length;
