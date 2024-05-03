@@ -119,6 +119,14 @@ main {
   /* background-color: aliceblue; */
 }
 
+/* (수정) 댓글 버튼이 너무 붙어있는 것 같아 조금 거리를 줬습니다. */
+.comment-write > button {
+  margin-left: 10px;
+}
+
+.write-Fixing {
+}
+
 .comment__wrapper {
   width: 100%;
   display: grid;

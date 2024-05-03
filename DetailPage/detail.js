@@ -182,10 +182,10 @@ const generateComment = (comments) => {
           </div>
           <p>${element.review}</p>
         </section>
-        <div class="rate">
+        <button class="rate">
           <i class="fa-regular fa-thumbs-up fa-lg"></i>
-          <span>55</span>
-        </div>
+          <span>1</span>
+        </button>
       </li>`;
   });
 };
