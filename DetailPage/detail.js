@@ -123,15 +123,15 @@ const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const commentInput = document.getElementById("write");
 
-// const movieId = getMovieIdFromURL(); // URL에서 영화 식별자를 가져오는 함수
-
 function loadComments(movieId) {
   const comments = getComments(movieId);
   generateComment(comments);
 }
+
 function saveComments(movieId, comments) {
   localStorage.setItem(`comments_${movieId}`, JSON.stringify(comments));
 }
+
 function getComments(movieId) {
   const savedComments = localStorage.getItem(`comments_${movieId}`);
   return savedComments ? JSON.parse(savedComments) : [];
