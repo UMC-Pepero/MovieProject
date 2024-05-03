@@ -181,8 +181,8 @@ const generateComment = (comments) => {
               <span class="stars">${element.rating}</span>
           </div>
           <p>${element.review}</p>
-          <div class="edit-delete" >
-            <button id="edit"><i class="fa-solid fa-pen fa-lg"></i></button>
+          <div class="edit-delete">
+            <button id= "edit" class ="edit-btn"><i class="fa-solid fa-pen fa-lg"></i></button>
             <button id="delete"><i class="fa-regular fa-trash-can fa-lg"></i></i></button>
           </div>
         </section>
@@ -190,6 +190,8 @@ const generateComment = (comments) => {
           <i class="fa-regular fa-thumbs-up fa-lg"></i>
           <span id= "result">0</span>
         </button>
+        <div id = "edit-list">
+        </div>
       </li>`;
   });
 };
@@ -246,5 +248,6 @@ function count(type) {
 }
 //댓글 삭제하기
 //댓글 수정하기
+
 //로컬스토리지 아이템 갯수 -> 총 댓글 수에 반영하기
 const commentLength = window.localStorage.length;

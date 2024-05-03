@@ -1,5 +1,5 @@
-@import './reset.css';
-@import '/DetailPage/detail.css';
+@import "./reset.css";
+@import "/DetailPage/detail.css";
 
 main {
   /* width: 100vw; */
@@ -156,7 +156,7 @@ main {
   height: auto;
   display: flex;
   flex-direction: column;
-  gap: 1.0em;
+  gap: 1em;
 }
 
 .comment > h4 {
