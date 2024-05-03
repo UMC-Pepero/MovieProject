@@ -182,9 +182,9 @@ const generateComment = (comments) => {
           </div>
           <p>${element.review}</p>
         </section>
-        <button class="rate">
+        <button class="rate" onclick='count("plus")' value = '+'>
           <i class="fa-regular fa-thumbs-up fa-lg"></i>
-          <span>1</span>
+          <span id= "result">0</span>
         </button>
       </li>`;
   });
@@ -224,3 +224,19 @@ const highlightStars = (value) => {
     }
   });
 };
+
+// (수정)따봉 버튼을 누르면 숫자가 올라가게끔
+function count(type) {
+  // 결과를 표시할 element
+  const resultElement = document.getElementById("result");
+
+  // 현재 화면에 표시된 값
+  let number = resultElement.innerText;
+
+  // 더하기/빼기
+  if (type === "plus") {
+    number = parseInt(number) + 1;
+  }
+  // 결과 출력
+  resultElement.innerText = number;
+}
