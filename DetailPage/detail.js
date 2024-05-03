@@ -11,6 +11,7 @@ function getmovieData(id) {
     .then((response) => response.json())
     .then((data) => {
       movieData(data);
+      loadComments(id);
     })
     .catch((error) => console.error("Error fetching movie details:", error));
 }
@@ -114,4 +115,112 @@ const switchDarkTheme = () => {
 const switchLightTheme = () => {
   localStorage.removeItem("theme", "dark");
   html.classList.remove(mode);
+};
+
+// 댓글 기능
+const commentForm = document.querySelector(".comment-write__box");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+const commentInput = document.getElementById("write");
+
+// const movieId = getMovieIdFromURL(); // URL에서 영화 식별자를 가져오는 함수
+
+function loadComments(movieId) {
+  const comments = getComments(movieId);
+  generateComment(comments);
+}
+function saveComments(movieId, comments) {
+  localStorage.setItem(`comments_${movieId}`, JSON.stringify(comments));
+}
+function getComments(movieId) {
+  const savedComments = localStorage.getItem(`comments_${movieId}`);
+  return savedComments ? JSON.parse(savedComments) : [];
+}
+
+const handleSubmitForm = (event) => {
+  event.preventDefault();
+
+  const username = usernameInput.value;
+  const password = passwordInput.value;
+  const comment = commentInput.value;
+  const rating = selectedRating;
+
+  usernameInput.value = "";
+  passwordInput.value = "";
+  commentInput.value = "";
+
+  let newComment = {
+    user: username,
+    password: password,
+    review: comment,
+    rating: rating,
+  };
+
+  let comments = getComments(movieId);
+  comments.unshift(newComment);
+  saveComments(movieId, comments);
+  generateComment(comments);
+};
+
+commentForm.addEventListener("submit", handleSubmitForm);
+
+const generateComment = (comments) => {
+  const commentBox = document.querySelector(".comment__wrapper");
+  commentBox.innerHTML = "";
+  comments.forEach((element) => {
+    commentBox.innerHTML += `
+      <li class="comment__box">
+        <img
+          class="user-image"
+          src="https://static.vecteezy.com/system/resources/thumbnails/005/276/776/small/logo-icon-person-on-white-background-free-vector.jpg"
+        />
+        <section class="comment">
+          <div class="userInfo">
+            <h4>${element.user}</h4>
+            <span class="starsIcon material-symbols-outlined" style="font-size: 18px"">kid_star</span>
+            <span class="stars">${element.rating}</span>
+          </div>
+          <p>${element.review}</p>
+        </section>
+        <div class="rate">
+          <i class="fa-regular fa-thumbs-up fa-lg"></i>
+          <span>55</span>
+        </div>
+      </li>`;
+  });
+};
+
+// 4. 페이지가 로드될 때 기존 댓글 불러오기
+window.onload = function () {
+  generateComment();
+};
+
+//5. 댓글 목록 불러오기
+
+// 고친 부분
+//6. 별점 주기
+const stars = document.querySelectorAll(".star");
+let selectedRating = 0;
+
+stars.forEach((star) => {
+  star.addEventListener("click", () => {
+    const value = parseInt(star.getAttribute("data-value"));
+    selectedRating = value;
+    highlightStars(value);
+    saveRating(value);
+  });
+});
+
+const saveRating = (rating) => {
+  localStorage.setItem("Rating", rating);
+};
+
+const highlightStars = (value) => {
+  stars.forEach((star, index) => {
+    if (index < value) {
+      star.textContent = "★";
+    } else {
+      star.textContent = "☆";
+    }
+  });
 };
