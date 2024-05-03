@@ -1,9 +1,26 @@
+// import { getmovieData } from "./detail.js";
+// import { movieId } from "./detail.js";
+// console.log(movieId);
+
 const commentForm = document.querySelector(".comment-write__box");
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const commentInput = document.getElementById("write");
 
-// const movieId = getMovieIdFromURL(); // URL에서 영화 식별자를 가져오는 함수
+// const movieID = getmovieData(movieId);
+// console.log(movieID);
+
+// const movieID = getMovieIdFromURL(); // URL에서 영화 식별자를 가져오는 함수
+
+// // 현재 페이지의 URL에서 영화 식별자를 추출
+// function getMovieIdFromURL() {
+//   const url = window.location.href;
+//   const urlParts = url.split("?");
+//   // 예를 들어, URL이 "http://example.com/movies.html?id=123"인 경우,
+//   // "movies.html" 다음 부분이 식별자일 수 있다.
+//   const movieID = urlParts[urlParts.length - 1];
+//   return movieID;
+// }
 
 const handleSubmitForm = (event) => {
   event.preventDefault();
@@ -22,6 +39,7 @@ const handleSubmitForm = (event) => {
     user: username,
     password: password,
     review: comment,
+    id: movieId,
   };
   // 1. 로컬스토리지에서 가져온다.
   const commentsArr = getComments();
@@ -37,27 +55,23 @@ const handleSubmitForm = (event) => {
 commentForm.addEventListener("submit", handleSubmitForm);
 
 //여기서 comments는 인자로 사용
-const saveComments = (comments) => {
-  localStorage.setItem("comments", JSON.stringify(comments));
+const saveComments = (movieID, comments) => {
+  localStorage.setItem(`comments_${movieID}`, JSON.stringify(comments));
 };
 
 // 로컬 스토리지에서 댓글 배열 가져오기
-const getComments = () => {
-  const savedComments = localStorage.getItem("comments");
+const getComments = (movieID) => {
+  const savedComments = localStorage.getItem(`comments_${movieID}`);
 
-  if (savedComments) {
-    return JSON.parse(savedComments); //다시 배열로 바꿔주기
-  } else {
-    return [];
-  }
+  return savedComments ? JSON.parse(savedComments) : [];
 };
 
-const generateComment = (newComment) => {
+const generateComment = () => {
   const commentBox = document.querySelector(".comment__wrapper");
   commentBox.innerHTML = "";
 
   let commentDrawn = getComments();
-  //commentsArr를 순회하면서 댓글 그리기
+  //commentsDrawn를 순회하면서 댓글 그리기
   commentDrawn.forEach((element) => {
     commentBox.innerHTML += `
   <li class="comment__box">
