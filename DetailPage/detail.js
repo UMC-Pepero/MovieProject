@@ -208,7 +208,9 @@ window.onload = function () {
   generateComment();
 };
 
-//5. 댓글 목록 불러오기
+//5. (수정) 비어 있길래 넣었습니다 -> 댓글 목록 불러오기
+const localData = localStorage.getItem(`comments_${movieId}`);
+console.log(localData);
 
 // 고친 부분
 //6. 별점 주기
