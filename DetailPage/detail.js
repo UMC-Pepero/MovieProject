@@ -156,6 +156,9 @@ const handleSubmitForm = (event) => {
     rating: rating,
   };
 
+  //로컬스토리지 아이템 갯수 -> 총 댓글 수에 반영하기
+  //  comments.length
+
   loadComments(movieId);
   let comments = getComments(movieId);
   comments.unshift(newComment);
@@ -179,8 +182,10 @@ const generateComment = (comments) => {
         <section class="comment">
           <div class="userInfo">
               <h4>${element.user}</h4>
-              <span class="starsIcon material-symbols-outlined" style="font-size: 18px"">kid_star</span>
-              <span class="stars">${element.rating}</span>
+              <div class="star-box">
+                <span class="starsIcon material-symbols-outlined" style="font-size: 18px"">kid_star</span>
+                <span class="stars">${element.rating}</span>
+              </div>
           </div>
           <p>${element.review}</p>
           <div class="edit-delete" >
@@ -233,5 +238,3 @@ const highlightStars = (value) => {
 
 //댓글 삭제하기
 //댓글 수정하기
-//로컬스토리지 아이템 갯수 -> 총 댓글 수에 반영하기
-const commentLength = window.localStorage.length;
