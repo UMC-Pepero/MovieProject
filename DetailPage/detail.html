@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie List</title>
     <!-- <link rel="stylesheet" href="detail.css" /> -->
-    <link rel="stylesheet" href="detail.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -14,6 +17,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+    <link rel="stylesheet" href="comment.css" />
+    <link rel="stylesheet" href="detail.css" />
   </head>
   <body>
     <header class="headerBar">
@@ -49,6 +54,55 @@
     <button class="scrollBtn">
       <i class="fa-solid fa-arrow-up fa-2x"></i>
     </button>
+
+    <main>
+      <div class="review__title">
+        <h3>Review</h3>
+        <span>12233</span>
+      </div>
+
+      <section class="comment-make__box">
+        <img
+          class="user-image"
+          src="https://static.vecteezy.com/system/resources/thumbnails/005/276/776/small/logo-icon-person-on-white-background-free-vector.jpg"
+        />
+        <form class="comment-write__box">
+          <div class="id-password__box">
+            <input id="username" type="text" required placeholder="Username" />
+            <input
+              id="password"
+              type="password"
+              required
+              placeholder="Password"
+            />
+            <!-- 고친 부분 -->
+            <div class="rating" style="cursor: pointer; display: flex">
+              <span class="star" data-value="1">☆</span>
+              <span class="star" data-value="2">☆</span>
+              <span class="star" data-value="3">☆</span>
+              <span class="star" data-value="4">☆</span>
+              <span class="star" data-value="5">☆</span>
+            </div>
+          </div>
+          <div class="comment-write">
+            <textarea
+              id="write"
+              placeholder="감상평을 남겨주세요."
+              required
+            ></textarea>
+            <button class="wrtie-btn">
+              <i class="fa-solid fa-pen-to-square fa-lg"></i>
+            </button>
+          </div>
+        </form>
+      </section>
+      <ul class="comment__wrapper"></ul>
+    </main>
+    <script
+      src="https://kit.fontawesome.com/748fe0d700.js"
+      crossorigin="anonymous"
+    ></script>
+
     <script src="detail.js"></script>
   </body>
 </html>
