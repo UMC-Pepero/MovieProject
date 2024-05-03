@@ -156,6 +156,7 @@ const handleSubmitForm = (event) => {
     rating: rating,
   };
 
+  loadComments(movieId);
   let comments = getComments(movieId);
   comments.unshift(newComment);
   saveComments(movieId, comments);
@@ -167,7 +168,8 @@ commentForm.addEventListener("submit", handleSubmitForm);
 const generateComment = (comments) => {
   const commentBox = document.querySelector(".comment__wrapper");
   commentBox.innerHTML = "";
-  comments.forEach((element) => {
+  let commentDrawn = getComments(movieId, comments);
+  commentDrawn.forEach((element) => {
     commentBox.innerHTML += `
       <li class="comment__box">
         <img
