@@ -168,6 +168,12 @@ main {
   align-items: center;
 }
 
+.star {
+  padding: 5px;
+  font-size: 20px;
+  color: rgb(255, 161, 19);
+}
+
 .stars {
   width: 20px;
   height: 20px;
