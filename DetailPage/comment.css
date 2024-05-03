@@ -162,6 +162,27 @@ main {
   -webkit-box-orient: vertical; */
 }
 
+.userInfo {
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.stars {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.starsIcon {
+  width: 20px;
+  height: 20px;
+  margin-left: 30px;
+  color: rgb(232, 139, 0);
+}
+
 .rate {
   width: 2.8em;
   height: 100%;
