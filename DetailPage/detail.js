@@ -154,11 +154,11 @@ const handleSubmitForm = (event) => {
   commentInput.value = "";
 
   let newComment = {
-    user: username,
-    password: password,
-    review: comment,
-    rating: rating,
-    index: number++,
+    User: username,
+    Password: password,
+    Review: comment,
+    Rating: rating,
+    Index: number++,
   };
 
   //로컬스토리지 아이템 갯수 -> 총 댓글 수에 반영하기
@@ -184,22 +184,22 @@ const generateComment = (comments) => {
     //   localStorage.getItem(`comments_${movieId}`);
     //   localStorage.removeItem(`comments_${movieId}.review`);
     // };
-
+    console.log();
     commentBox.innerHTML += `
-      <li class="comment__box" data-index="${element.index}">
+      <li class="comment__box" data-index=${element.Index}>
         <img
           class="user-image"
           src="https://static.vecteezy.com/system/resources/thumbnails/005/276/776/small/logo-icon-person-on-white-background-free-vector.jpg"
         />
         <section class="comment">
           <div class="userInfo">
-              <h4>${element.user}</h4>
+              <h4>${element.User}</h4>
               <div class="star-box">
                 <span class="starsIcon material-symbols-outlined" style="font-size: 18px"">kid_star</span>
-                <span class="stars">${element.rating}</span>
+                <span class="stars">${element.Rating}</span>
               </div>
           </div>
-          <p>${element.review}</p>
+          <p>${element.Review}</p>
           <div class="edit-delete" >
             <button class="edit"><i class="fa-solid fa-pen fa-lg"></i></button>
             <button class="delete" ><i class="fa-regular fa-trash-can fa-lg"></i></i></button>
@@ -218,20 +218,25 @@ const generateComment = (comments) => {
     const li =
       event.target.parentElement.parentElement.parentElement.parentElement;
     li.remove();
+
     const indexBox = document.querySelector(".comment__box");
-    const deleteIndex = indexBox.dataset["index"];
+    const deleteIndex = indexBox.getAttribute("data-index");
+    console.log(deleteIndex);
+    console.log(commentDrawn);
 
     const newComments = [];
     commentDrawn.forEach((element) => {
-      if (element.dataset["index"] !== deleteIndex) {
-        newComments.push(element);
+      if (element.Index !== deleteIndex) {
+        newComments.push(element); //이 부분 문제
+        console.log(newComments);
       }
     });
-    localStorage.setItem(comments, newComments);
+
+    localStorage.setItem(comments, newComments); //이 부분 문제
   };
 
   const deleteBtn = document.querySelectorAll(".delete");
-  deleteBtn.forEach((element, index) =>
+  deleteBtn.forEach((element) =>
     element.addEventListener("click", deleteComment)
   );
 };
