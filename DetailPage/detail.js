@@ -165,9 +165,6 @@ const handleSubmitForm = (event) => {
     Id: randomId,
   };
 
-  //로컬스토리지 아이템 갯수 -> 총 댓글 수에 반영하기
-  //  comments.length
-
   loadComments(movieId);
   let comments = getComments(movieId);
   comments.unshift(newComment);
@@ -229,6 +226,7 @@ const generateComment = (comments) => {
           // console.log({ newComments }); //새로운 배열 확인
           saveComments(movieId, newComments);
           alert("삭제되었습니다.");
+          location.reload();
         } else if (passwordTry === null) {
           cancelSwitch = false;
           alert("취소되었습니다.");
@@ -281,6 +279,12 @@ const generateComment = (comments) => {
   //     editComment(target);
   //   }
   // });
+
+  //댓글 수 나타내기
+  let commentsCount = getComments(movieId).length;
+  document.querySelector(
+    ".comments__length"
+  ).innerHTML = `( ${commentsCount} )`;
 };
 
 // 페이지가 로드될 때 기존 댓글 불러오기
