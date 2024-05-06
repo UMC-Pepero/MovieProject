@@ -222,38 +222,71 @@ const generateComment = (comments) => {
         if (passwordTry === element.Password) {
           cancelSwitch = true;
           li.remove();
+
+          const newComments = commentDrawn.filter(
+            (element) => element.Id !== li.getAttribute("id")
+          );
+          // console.log({ newComments }); //새로운 배열 확인
+          saveComments(movieId, newComments);
+          alert("삭제되었습니다.");
+        } else if (passwordTry === null) {
+          cancelSwitch = false;
+          alert("취소되었습니다.");
         } else {
           cancelSwitch = false;
-          alert("비밀번호가 틀렸습니다. 다시 시도해주세요.");
+          alert("비밀번호가 틀렸습니다. 다시 입력해주세요.");
         }
       }
     });
-
-    if (cancelSwitch) {
-      const newComments = commentDrawn.filter(
-        (element) => element.Id !== li.getAttribute("id")
-      );
-      // console.log({ newComments }); //새로운 배열 확인
-
-      saveComments(movieId, newComments);
-
-      alert("삭제되었습니다.");
-      // location.reload(); //
-    }
   };
 
   const deleteBtn = document.querySelectorAll(".delete");
   deleteBtn.forEach((element) =>
     element.addEventListener("click", deleteComment)
   );
+
+  //댓글 수정하기
+  const editComment = (e) => {
+    const commentBox = e.target.parentNode.parentNode.parentNode.parentNode;
+    console.log(commentBox);
+    const commentOnStorage = getComments(movieId);
+    let cancelSwitch = Boolean;
+    commentOnStorage.forEach((element) => {
+      if (commentBox.getAttribute("id") === String(element.Id)) {
+        const passwordEditTry = prompt("패스워드를 입력해주세요.");
+        if (passwordEditTry === element.Password) {
+          cancelSwitch = true;
+          element.Review = prompt("새로운 내용을 작성해주세요.");
+        } else {
+          cancelSwitch = false;
+          alert("취소되었습니다.");
+        }
+      }
+    });
+
+    if (cancelSwitch) {
+      saveComments(movieId, commentOnStorage);
+      alert("저장되었습니다.");
+      location.reload();
+    }
+  };
+
+  const editBtn = document.querySelectorAll(".edit");
+  editBtn.forEach((element) => element.addEventListener("click", editComment));
+
+  // document.addEventListener("click", (event) => {
+  //   if (event.target.classList.contains("edit")) {
+  //     const target = event.target;
+  //     console.log(target);
+  //     editComment(target);
+  //   }
+  // });
 };
 
 // 페이지가 로드될 때 기존 댓글 불러오기
 window.onload = function () {
   generateComment();
 };
-
-//댓글 수정하기
 
 //6. 별점 주기
 const stars = document.querySelectorAll(".star");
