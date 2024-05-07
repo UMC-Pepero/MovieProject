@@ -294,13 +294,13 @@ const generateComment = (comments) => {
   usernameInput.addEventListener("keyup", function (event) {
     if (event.getModifierState("CapsLock")) {
       // CapsLock이 켜져 있을 때
-      document.getElementById("capslock-warning").innerText = "CapsLock 이 활성화 되어있는 상태입니다";
+      document.getElementById("capslock-warning").innerText =
+        "CapsLock 이 활성화 되어있는 상태입니다";
     } else {
       // CapsLock이 꺼져 있을 때
       document.getElementById("capslock-warning").innerText = "";
     }
   });
-
 };
 
 // 페이지가 로드될 때 기존 댓글 불러오기
