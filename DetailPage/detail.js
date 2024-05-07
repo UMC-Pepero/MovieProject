@@ -248,7 +248,7 @@ function count(type) {
   // 현재 화면에 표시된 값
   let number = resultElement.innerText;
 
-  // 더하기/빼기
+  // 더하기
   if (type === "plus") {
     number = parseInt(number) + 1;
   }
