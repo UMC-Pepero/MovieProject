@@ -48,7 +48,6 @@ main {
   width: 3.5em;
   height: 3.5em;
   border-radius: 50%;
-  margin-right: 1.5em;
 }
 
 .user-image:first-child {
@@ -253,7 +252,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin-right: 1.5em;
+  margin-right: 0.5em;
   gap: 10px;
 }
 
@@ -274,17 +273,26 @@ main {
     width: 75%;
   }
 
+  .user-image {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+  }
+
   #username,
   #password {
-    width: 120px;
+    width: 80%;
     height: 25px;
   }
 
   .comment-write__box {
-    width: 70%;
+    width: 75%;
     padding: 0px;
   }
   .comment {
     width: 70%;
+  }
+  .profile {
+    margin-right: 0px;
   }
 }
