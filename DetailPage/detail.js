@@ -323,6 +323,3 @@ const highlightStars = (value) => {
     }
   });
 };
-
-//댓글 삭제하기
-//댓글 수정하기
