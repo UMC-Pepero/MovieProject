@@ -245,34 +245,98 @@ const generateComment = (comments) => {
     element.addEventListener("click", deleteComment)
   );
 
-  //댓글 수정하기
+  //댓글 수정하기 (기존)
+  // const editComment = (e) => {
+  //   const commentBox = e.target.parentNode.parentNode.parentNode.parentNode;
+  //   console.log(commentBox);
+  //   const commentOnStorage = getComments(movieId);
+  //   let cancelSwitch = Boolean;
+  //   commentOnStorage.forEach((element) => {
+  //     if (commentBox.getAttribute("id") === String(element.Id)) {
+  //       const passwordEditTry = prompt("패스워드를 입력해주세요.");
+  //       if (passwordEditTry === element.Password) {
+  //         cancelSwitch = true;
+  //         element.Review = prompt("새로운 내용을 작성해주세요.");
+  //       } else {
+  //         cancelSwitch = false;
+  //         alert("취소되었습니다.");
+  //       }
+  //     }
+  //   });
+
+  //   if (cancelSwitch) {
+  //     saveComments(movieId, commentOnStorage);
+  //     alert("저장되었습니다.");
+  //     location.reload();
+  //   }
+  // };
+
+  // const editBtn = document.querySelectorAll(".edit");
+  // editBtn.forEach((element) => element.addEventListener("click", editComment));
+
+  //댓글 수정하기 (프롬프트 없앤 수정버젼)
+
+    //editcomment 함수는 (e) 라는 이벤트 객체를 매개변수로 받음
+    //이벤트가 발생한 요소를 기준으로 해당 댓글의 영역을 찾음
+    //e.target 은 이벤트가 발생한 요소를 가리키고, 여러번의 부모함수를 통해 해당 댓글의 상위 요소를 찾아 commentbox 에 할당
+    //getComments(movieId); 함수를 호출해 현재 영화에 대한 모든 댓글을 가져옴 (movieId 를 매개변수로 받아 해당 영화에 대한 댓글 목록 반환)
+
   const editComment = (e) => {
     const commentBox = e.target.parentNode.parentNode.parentNode.parentNode;
-    console.log(commentBox);
     const commentOnStorage = getComments(movieId);
-    let cancelSwitch = Boolean;
+    let cancelSwitch = false;
+  
     commentOnStorage.forEach((element) => {
       if (commentBox.getAttribute("id") === String(element.Id)) {
-        const passwordEditTry = prompt("패스워드를 입력해주세요.");
-        if (passwordEditTry === element.Password) {
-          cancelSwitch = true;
-          element.Review = prompt("새로운 내용을 작성해주세요.");
-        } else {
-          cancelSwitch = false;
-          alert("취소되었습니다.");
-        }
+
+        const passwordInput = document.createElement("input");
+        passwordInput.type = "password";
+        passwordInput.placeholder = "패스워드를 입력해주세요.";
+        commentBox.appendChild(passwordInput);
+  
+        const submitBtn = document.createElement("button");
+        submitBtn.textContent = "확인";
+        commentBox.appendChild(submitBtn);
+
+        submitBtn.addEventListener("click", () => {
+          const passwordEditTry = passwordInput.value;
+          if (passwordEditTry === element.Password) {
+            cancelSwitch = true;
+  
+            const inputElement = document.createElement("input");
+            inputElement.type = "text";
+            inputElement.value = element.Review;
+            commentBox.innerHTML = "";
+            commentBox.appendChild(inputElement);
+  
+            inputElement.addEventListener("keydown", (e) => {
+              if (e.key === "Enter") {
+                element.Review = inputElement.value;
+                saveComments(movieId, commentOnStorage);
+                alert("저장되었습니다.");
+                location.reload();
+              }
+            });
+          } else {
+            cancelSwitch = false;
+            alert("취소되었습니다.");
+          }
+          
+          commentBox.removeChild(passwordInput);
+          commentBox.removeChild(submitBtn);
+        });
       }
     });
-
-    if (cancelSwitch) {
-      saveComments(movieId, commentOnStorage);
-      alert("저장되었습니다.");
-      location.reload();
+  
+    if (!cancelSwitch) {
+      return;
     }
   };
-
+  
   const editBtn = document.querySelectorAll(".edit");
   editBtn.forEach((element) => element.addEventListener("click", editComment));
+
+  
 
   // document.addEventListener("click", (event) => {
   //   if (event.target.classList.contains("edit")) {
