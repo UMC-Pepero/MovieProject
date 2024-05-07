@@ -123,19 +123,24 @@ const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const commentInput = document.getElementById("write");
 
+// 로컬스토리지 데이터 불러오기
 function loadComments(movieId) {
   const comments = getComments(movieId);
   generateComment(comments);
 }
 
+// 로컬스토리지에 데이터 저장하기
 function saveComments(movieId, comments) {
   localStorage.setItem(`comments_${movieId}`, JSON.stringify(comments));
 }
 
+//로컬스토리지에서 데이터 가져오기
 function getComments(movieId) {
   const savedComments = localStorage.getItem(`comments_${movieId}`);
   return savedComments ? JSON.parse(savedComments) : [];
 }
+
+// const randomId = Date.now(); //uuid js
 
 const handleSubmitForm = (event) => {
   event.preventDefault();
@@ -144,20 +149,21 @@ const handleSubmitForm = (event) => {
   const password = passwordInput.value;
   const comment = commentInput.value;
   const rating = selectedRating;
+  // const indexBox = document.querySelector(".comment__box");
+  // const index = indexBox.dataset["index"];
+  const randomId = Date.now().toString();
 
   usernameInput.value = "";
   passwordInput.value = "";
   commentInput.value = "";
 
   let newComment = {
-    user: username,
-    password: password,
-    review: comment,
-    rating: rating,
+    User: username,
+    Password: password,
+    Review: comment,
+    Rating: rating,
+    Id: randomId,
   };
-
-  //로컬스토리지 아이템 갯수 -> 총 댓글 수에 반영하기
-  //  comments.length
 
   loadComments(movieId);
   let comments = getComments(movieId);
@@ -172,24 +178,25 @@ const generateComment = (comments) => {
   const commentBox = document.querySelector(".comment__wrapper");
   commentBox.innerHTML = "";
   let commentDrawn = getComments(movieId, comments);
+
   commentDrawn.forEach((element) => {
     commentBox.innerHTML += `
-      <li class="comment__box">
+      <li class="comment__box" id=${element.Id}>
         <img
           class="user-image"
           src="https://static.vecteezy.com/system/resources/thumbnails/005/276/776/small/logo-icon-person-on-white-background-free-vector.jpg"
         />
         <section class="comment">
           <div class="userInfo">
-              <h4>${element.user}</h4>
+              <h4>${element.User}</h4>
               <div class="star-box">
                 <span class="starsIcon material-symbols-outlined" style="font-size: 18px"">kid_star</span>
-                <span class="stars">${element.rating}</span>
+                <span class="stars">${element.Rating}</span>
               </div>
           </div>
           <p>${element.review}</p>
-          <div class="edit-delete">
-            <button id= "edit" class ="edit-btn"><i class="fa-solid fa-pen fa-lg"></i></button>
+          <div class="edit-delete" >
+            <button id="edit"><i class="fa-solid fa-pen fa-lg"></i></button>
             <button id="delete"><i class="fa-regular fa-trash-can fa-lg"></i></i></button>
           </div>
         </section>
@@ -201,16 +208,93 @@ const generateComment = (comments) => {
         </div>
       </li>`;
   });
+
+  //댓글 삭제하기
+  const deleteComment = (event) => {
+    const li =
+      event.target.parentElement.parentElement.parentElement.parentElement;
+    let cancelSwitch = Boolean;
+
+    commentDrawn.forEach((element) => {
+      if (li.getAttribute("id") === String(element.Id)) {
+        const passwordTry = prompt("패스워드를 입력해주세요.");
+        if (passwordTry === element.Password) {
+          cancelSwitch = true;
+          li.remove();
+
+          const newComments = commentDrawn.filter(
+            (element) => element.Id !== li.getAttribute("id")
+          );
+          // console.log({ newComments }); //새로운 배열 확인
+          saveComments(movieId, newComments);
+          alert("삭제되었습니다.");
+          location.reload();
+        } else if (passwordTry === null) {
+          cancelSwitch = false;
+          alert("취소되었습니다.");
+        } else {
+          cancelSwitch = false;
+          alert("비밀번호가 틀렸습니다. 다시 입력해주세요.");
+        }
+      }
+    });
+  };
+
+  const deleteBtn = document.querySelectorAll(".delete");
+  deleteBtn.forEach((element) =>
+    element.addEventListener("click", deleteComment)
+  );
+
+  //댓글 수정하기
+  const editComment = (e) => {
+    const commentBox = e.target.parentNode.parentNode.parentNode.parentNode;
+    console.log(commentBox);
+    const commentOnStorage = getComments(movieId);
+    let cancelSwitch = Boolean;
+    commentOnStorage.forEach((element) => {
+      if (commentBox.getAttribute("id") === String(element.Id)) {
+        const passwordEditTry = prompt("패스워드를 입력해주세요.");
+        if (passwordEditTry === element.Password) {
+          cancelSwitch = true;
+          element.Review = prompt("새로운 내용을 작성해주세요.");
+        } else {
+          cancelSwitch = false;
+          alert("취소되었습니다.");
+        }
+      }
+    });
+
+    if (cancelSwitch) {
+      saveComments(movieId, commentOnStorage);
+      alert("저장되었습니다.");
+      location.reload();
+    }
+  };
+
+  const editBtn = document.querySelectorAll(".edit");
+  editBtn.forEach((element) => element.addEventListener("click", editComment));
+
+  // document.addEventListener("click", (event) => {
+  //   if (event.target.classList.contains("edit")) {
+  //     const target = event.target;
+  //     console.log(target);
+  //     editComment(target);
+  //   }
+  // });
+
+  //댓글 수 나타내기
+  let commentsCount = getComments(movieId).length;
+  document.querySelector(
+    ".comments__length"
+  ).innerHTML = `( ${commentsCount} )`;
 };
 
-// 4. 페이지가 로드될 때 기존 댓글 불러오기
+// 페이지가 로드될 때 기존 댓글 불러오기
 window.onload = function () {
   generateComment();
 };
 
-//5. (수정) 비어 있길래 넣었습니다 -> 댓글 목록 불러오기
-const localData = localStorage.getItem(`comments_${movieId}`);
-console.log(localData);
+//5. 댓글 목록 불러오기
 
 // 고친 부분
 //6. 별점 주기
@@ -240,24 +324,5 @@ const highlightStars = (value) => {
   });
 };
 
-// (수정)따봉 버튼을 누르면 숫자가 올라가게끔
-function count(type) {
-  // 결과를 표시할 element
-  const resultElement = document.getElementById("result");
-
-  // 현재 화면에 표시된 값
-  let number = resultElement.innerText;
-
-  // 더하기
-  if (type === "plus") {
-    number = parseInt(number) + 1;
-  }
-  // 결과 출력
-  resultElement.innerText = number;
-}
-
 //댓글 삭제하기
 //댓글 수정하기
-
-//로컬스토리지 아이템 갯수 -> 총 댓글 수에 반영하기
-const commentLength = window.localStorage.length;
