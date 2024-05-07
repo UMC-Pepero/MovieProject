@@ -207,33 +207,79 @@ const generateComment = (comments) => {
       </li>`;
   });
 
-  //댓글 삭제하기
+  //댓글 삭제하기(기존)
+  // const deleteComment = (event) => {
+  //   const li =
+  //     event.target.parentElement.parentElement.parentElement.parentElement;
+  //   let cancelSwitch = Boolean;
+
+  //   commentDrawn.forEach((element) => {
+  //     if (li.getAttribute("id") === String(element.Id)) {
+  //       const passwordTry = prompt("패스워드를 입력해주세요.");
+  //       if (passwordTry === element.Password) {
+  //         cancelSwitch = true;
+  //         li.remove();
+
+  //         const newComments = commentDrawn.filter(
+  //           (element) => element.Id !== li.getAttribute("id")
+  //         );
+  //         // console.log({ newComments }); //새로운 배열 확인
+  //         saveComments(movieId, newComments);
+  //         alert("삭제되었습니다.");
+  //         location.reload();
+  //       } else if (passwordTry === null) {
+  //         cancelSwitch = false;
+  //         alert("취소되었습니다.");
+  //       } else {
+  //         cancelSwitch = false;
+  //         alert("비밀번호가 틀렸습니다. 다시 입력해주세요.");
+  //       }
+  //     }
+  //   });
+  // };
+
+  // const deleteBtn = document.querySelectorAll(".delete");
+  // deleteBtn.forEach((element) =>
+  //   element.addEventListener("click", deleteComment)
+  // );
+
+ //댓글 삭제하기 (모달 수정)
+  const modal = document.getElementById("delmodal");
+  const confirmBtn = document.getElementById("delconfirmBtn");
+  const passwordInput = document.getElementById("delpasswordInput");
+
   const deleteComment = (event) => {
-    const li =
-      event.target.parentElement.parentElement.parentElement.parentElement;
+    const li = event.target.parentElement.parentElement.parentElement.parentElement;
     let cancelSwitch = Boolean;
 
     commentDrawn.forEach((element) => {
       if (li.getAttribute("id") === String(element.Id)) {
-        const passwordTry = prompt("패스워드를 입력해주세요.");
-        if (passwordTry === element.Password) {
-          cancelSwitch = true;
-          li.remove();
+        modal.style.display = "block";
 
-          const newComments = commentDrawn.filter(
-            (element) => element.Id !== li.getAttribute("id")
-          );
-          // console.log({ newComments }); //새로운 배열 확인
-          saveComments(movieId, newComments);
-          alert("삭제되었습니다.");
-          location.reload();
-        } else if (passwordTry === null) {
+        confirmBtn.onclick = () => {
+          const passwordTry = passwordInput.value;
+          if (passwordTry === element.Password) {
+            cancelSwitch = true;
+            li.remove();
+
+            const newComments = commentDrawn.filter(
+              (element) => element.Id !== li.getAttribute("id")
+            );
+            saveComments(movieId, newComments);
+            alert("삭제되었습니다.");
+            location.reload();
+          } else {
+            cancelSwitch = false;
+            alert("비밀번호가 틀렸습니다. 다시 입력해주세요.");
+          }
+          modal.style.display = "none";
+        };
+
+        modal.querySelector(".close").onclick = () => {
+          modal.style.display = "none";
           cancelSwitch = false;
           alert("취소되었습니다.");
-        } else {
-          cancelSwitch = false;
-          alert("비밀번호가 틀렸습니다. 다시 입력해주세요.");
-        }
+        };
       }
     });
   };
@@ -243,34 +289,89 @@ const generateComment = (comments) => {
     element.addEventListener("click", deleteComment)
   );
 
-  //댓글 수정하기
+  // 댓글 수정하기 (기존)
+  // const editComment = (e) => {
+  //   const commentBox = e.target.parentNode.parentNode.parentNode.parentNode;
+  //   console.log(commentBox);
+  //   const commentOnStorage = getComments(movieId);
+  //   let cancelSwitch = Boolean;
+  //   commentOnStorage.forEach((element) => {
+  //     if (commentBox.getAttribute("id") === String(element.Id)) {
+  //       const passwordEditTry = prompt("패스워드를 입력해주세요.");
+  //       if (passwordEditTry === element.Password) {
+  //         cancelSwitch = true;
+  //         element.Review = prompt("새로운 내용을 작성해주세요.");
+  //       } else {
+  //         cancelSwitch = false;
+  //         alert("취소되었습니다.");
+  //       }
+  //     }
+  //   });
+
+  //   if (cancelSwitch) {
+  //     saveComments(movieId, commentOnStorage);
+  //     alert("저장되었습니다.");
+  //     location.reload();
+  //   }
+  // };
+
+  // const editBtn = document.querySelectorAll(".edit");
+  // editBtn.forEach((element) => element.addEventListener("click", editComment));
+
+  // 댓글 수정 (모달 수정)
   const editComment = (e) => {
     const commentBox = e.target.parentNode.parentNode.parentNode.parentNode;
-    console.log(commentBox);
     const commentOnStorage = getComments(movieId);
-    let cancelSwitch = Boolean;
-    commentOnStorage.forEach((element) => {
-      if (commentBox.getAttribute("id") === String(element.Id)) {
-        const passwordEditTry = prompt("패스워드를 입력해주세요.");
-        if (passwordEditTry === element.Password) {
-          cancelSwitch = true;
-          element.Review = prompt("새로운 내용을 작성해주세요.");
-        } else {
-          cancelSwitch = false;
-          alert("취소되었습니다.");
-        }
-      }
-    });
+    const modal = document.getElementById("modal");
+    const passwordInput = document.getElementById("passwordInput");
+    const commentInput = document.getElementById("commentInput");
+    const submitBtn = document.getElementById("submitBtn");
+    const cancelBtn = document.getElementById("cancelBtn");
 
-    if (cancelSwitch) {
-      saveComments(movieId, commentOnStorage);
-      alert("저장되었습니다.");
-      location.reload();
-    }
+    modal.style.display = "block"; // 모달창 열기
+
+    // 모달창 닫기
+    const closeModal = () => {
+      modal.style.display = "none";
+      passwordInput.value = "";
+      commentInput.value = "";
+    };
+
+    // 확인 버튼 클릭 시
+    submitBtn.onclick = () => {
+      const passwordEditTry = passwordInput.value;
+      commentOnStorage.forEach((element) => {
+        if (commentBox.getAttribute("id") === String(element.Id)) {
+          if (passwordEditTry === element.Password) {
+            element.Review = commentInput.value;
+            saveComments(movieId, commentOnStorage);
+            alert("저장되었습니다.");
+            closeModal(); // 모달 닫기
+            location.reload(); // 페이지 새로고침
+          } else {
+            alert("비밀번호가 일치하지 않습니다.");
+            closeModal(); // 모달 닫기
+          }
+        }
+      });
+    };
+
+    // 취소 버튼 클릭 시
+    cancelBtn.onclick = () => {
+      closeModal(); // 모달 닫기
+    };
+
+    // 모달 외부 클릭 시 닫기
+    window.onclick = (event) => {
+      if (event.target === modal) {
+        closeModal(); // 모달 닫기
+      }
+    };
   };
 
   const editBtn = document.querySelectorAll(".edit");
   editBtn.forEach((element) => element.addEventListener("click", editComment));
+
 
   // document.addEventListener("click", (event) => {
   //   if (event.target.classList.contains("edit")) {
@@ -285,6 +386,20 @@ const generateComment = (comments) => {
   document.querySelector(
     ".comments__length"
   ).innerHTML = `( ${commentsCount} )`;
+
+  //캡스락 경고문 (username 에만 반응하게 구현해뒀어요)
+  const usernameInput = document.getElementById("username");
+
+  usernameInput.addEventListener("keyup", function (event) {
+    if (event.getModifierState("CapsLock")) {
+      // CapsLock이 켜져 있을 때
+      document.getElementById("capslock-warning").innerText = "CapsLock 이 활성화 되어있는 상태입니다";
+    } else {
+      // CapsLock이 꺼져 있을 때
+      document.getElementById("capslock-warning").innerText = "";
+    }
+  });
+
 };
 
 // 페이지가 로드될 때 기존 댓글 불러오기
