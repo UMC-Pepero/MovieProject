@@ -200,10 +200,13 @@ const generateComment = (comments) => {
             <button class="delete"><i class="fa-regular fa-trash-can fa-lg"></i></i></button>
           </div>
         </section>
-        <div class="rate">
+        <div class="checkPW">
+        </div>
+        <div class="like">
           <i class="fa-regular fa-thumbs-up fa-lg"></i>
           <span>55</span>
         </div>
+        
       </li>`;
   });
 
@@ -211,9 +214,9 @@ const generateComment = (comments) => {
   const deleteComment = (event) => {
     const li =
       event.target.parentElement.parentElement.parentElement.parentElement;
-    let cancelSwitch = Boolean;
 
     commentDrawn.forEach((element) => {
+      let cancelSwitch = Boolean;
       if (li.getAttribute("id") === String(element.Id)) {
         const passwordTry = prompt("패스워드를 입력해주세요.");
         if (passwordTry === element.Password) {
@@ -286,27 +289,46 @@ const generateComment = (comments) => {
   
     commentOnStorage.forEach((element) => {
       if (commentBox.getAttribute("id") === String(element.Id)) {
+        const checkPW = document.querySelector('.checkPW');
 
         const passwordInput = document.createElement("input");
         passwordInput.type = "password";
         passwordInput.placeholder = "패스워드를 입력해주세요.";
-        commentBox.appendChild(passwordInput);
+        passwordInput.classList.add('checkPassword');
   
         const submitBtn = document.createElement("button");
         submitBtn.textContent = "확인";
-        commentBox.appendChild(submitBtn);
+        submitBtn.classList.add('editBtn');
+        //commentBox.appendChild(submitBtn);
+
+        checkPW.append(passwordInput, submitBtn);
+        
 
         submitBtn.addEventListener("click", () => {
           const passwordEditTry = passwordInput.value;
           if (passwordEditTry === element.Password) {
             cancelSwitch = true;
   
-            const inputElement = document.createElement("input");
+            const inputElement = document.createElement("textarea");
             inputElement.type = "text";
-            inputElement.value = element.Review;
+            //inputElement.value = element.Review;
+            inputElement.placeholder = '수정할 내용을 입력해주세요.'
+            inputElement.classList.add('editText');
             commentBox.innerHTML = "";
-            commentBox.appendChild(inputElement);
-  
+            
+
+            const saveBtn = document.createElement('button');
+            saveBtn.classList.add('saveBtn');
+            saveBtn.textContent = '저장';
+
+            commentBox.append(inputElement, saveBtn);
+
+            saveBtn.addEventListener("click", (e) => {
+              element.Review = inputElement.value;
+                saveComments(movieId, commentOnStorage);
+                alert("저장되었습니다.");
+                location.reload();
+            });
             inputElement.addEventListener("keydown", (e) => {
               if (e.key === "Enter") {
                 element.Review = inputElement.value;

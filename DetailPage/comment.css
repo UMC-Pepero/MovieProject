@@ -157,6 +157,10 @@ main {
   border-radius: 10px;
 }
 
+.comment__box .user-image {
+  width: 5rem;
+}
+
 .comment {
   width: 100%;
   height: auto;
@@ -242,4 +246,35 @@ main {
 
 .hidden {
   display: none;
+}
+
+/* 비밀번호 확인 */
+.checkPW {
+ /* margin-right: 20px; */
+ /* background-color: black; */
+ width: 40%;
+}
+.checkPassword {
+  
+  height: 20px;
+  margin-right: 7px;
+}
+.editBtn {
+  width: 2rem;
+  background-color: rgb(222, 222, 222);
+  height: 30px;
+  border-radius: 10px;
+}
+
+.editText {
+  width: 500px;
+  height: 70px;
+  margin-right: 10px;
+}
+
+.saveBtn {
+  width: 40px;
+  background-color: rgb(222, 222, 222);
+  height: 30px;
+  border-radius: 10px;
 }
