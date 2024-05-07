@@ -275,7 +275,8 @@ body {
   /* 중앙 정렬 */
   padding: 60px;
   border: 1px solid #888;
-  width: 80%;
+  height: 400px;
+  width: 500px;
   /* 모달창 너비 */
 }
 
@@ -300,19 +301,6 @@ body {
   /* 테두리 모서리를 둥글게 만듦 */
 }
 
-.modalbtn {
-  float: right;
-  padding-top: 20px;
-}
-
-#submitBtn {
-  background-color: blue;
-}
-
-#cancelBtn {
-  background-color: red;
-}
-
 .delmodal {
   display: none;
   position: fixed;
@@ -331,7 +319,7 @@ body {
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 50%;
 }
 
 .close {
@@ -349,15 +337,77 @@ body {
 }
 
 #delpasswordInput {
-  border: 1px solid #ccc;
+  border: 1px solid #1d1d1d;
   /* 테두리 스타일 지정 */
   padding: 5px;
   /* 안쪽 여백 지정 */
-  border-radius: 4px;
+  border-radius: 10px;
   /* 테두리 모서리를 둥글게 만듦 */
 }
 
 .delbtn {
-  margin-left: 500px;
+  margin-left: 300px;
   margin-top: 10px;
+}
+
+.close-text {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#delconfirmBtn {
+  background-color: #bd1717;
+  color: #fefefe;
+  margin-left: 10px;
+  padding: 3px;
+  border-radius: 10px;
+  border: 1px solid #1d1d1d;
+  font-size: 15px;
+  width: 50px;
+}
+
+.modal-input {
+  height: 400px;
+  width: 500px;
+}
+
+#passwordInput {
+  display: flex;
+  border-radius: 20px;
+  border: 1px solid #1d1d1d;
+  font-weight: bold;
+}
+
+#commentInput {
+  display: flex;
+  height: 80px;
+  border-radius: 5px;
+  width: 500px;
+  height: 350px;
+  border-radius: 10px;
+  border: 1px solid #1d1d1d;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.modalbtn {
+  float: right;
+  padding-top: 20px;
+}
+
+#submitBtn {
+  background-color: #185ac5;
+  border-radius: 10px;
+  border: 1px solid #1d1d1d;
+  font-size: 20px;
+  width: 100px;
+}
+
+#cancelBtn {
+  background-color: #d70a0a;
+  border-radius: 10px;
+  border: 1px solid #1d1d1d;
+  font-size: 20px;
+  width: 100px;
 }
