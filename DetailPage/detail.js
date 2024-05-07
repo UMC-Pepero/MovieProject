@@ -218,7 +218,7 @@ const generateComment = (comments) => {
     commentDrawn.forEach((element) => {
       let cancelSwitch = Boolean;
       if (li.getAttribute("id") === String(element.Id)) {
-        const passwordTry = prompt("패스워드를 입력해주세요.");
+        const passwordTry = prompt("패스워드를 입력해 주세요.");
         if (passwordTry === element.Password) {
           cancelSwitch = true;
           li.remove();
@@ -235,7 +235,7 @@ const generateComment = (comments) => {
           alert("취소되었습니다.");
         } else {
           cancelSwitch = false;
-          alert("비밀번호가 틀렸습니다. 다시 입력해주세요.");
+          alert("비밀번호가 틀렸습니다. 다시 입력해 주세요.");
         }
       }
     });
@@ -293,7 +293,7 @@ const generateComment = (comments) => {
 
         const passwordInput = document.createElement("input");
         passwordInput.type = "password";
-        passwordInput.placeholder = "패스워드를 입력해주세요.";
+        passwordInput.placeholder = "패스워드를 입력해 주세요.";
         passwordInput.classList.add('checkPassword');
   
         const submitBtn = document.createElement("button");
@@ -312,7 +312,7 @@ const generateComment = (comments) => {
             const inputElement = document.createElement("textarea");
             inputElement.type = "text";
             //inputElement.value = element.Review;
-            inputElement.placeholder = '수정할 내용을 입력해주세요.'
+            inputElement.placeholder = '수정할 내용을 입력해 주세요.'
             inputElement.classList.add('editText');
             commentBox.innerHTML = "";
             
@@ -378,7 +378,7 @@ const generateComment = (comments) => {
   usernameInput.addEventListener("keyup", function (event) {
     if (event.getModifierState("CapsLock")) {
       // CapsLock이 켜져 있을 때
-      document.getElementById("capslock-warning").innerText = "CapsLock 이 활성화 되어있는 상태입니다";
+      document.getElementById("capslock-warning").innerText = "CapsLock 이 활성화되어있는 상태입니다";
     } else {
       // CapsLock이 꺼져 있을 때
       document.getElementById("capslock-warning").innerText = "";
