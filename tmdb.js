@@ -67,10 +67,19 @@ searchInput.addEventListener("input", () => {
   const searchTerm = searchInput.value.toLowerCase();
   const movieCards = Array.from(document.getElementsByClassName("movieCard"));
 
-  movieCards.forEach((card) => {
-    const title = card.querySelector(".movieTitle").textContent.toLowerCase();
-    card.style.display = title.includes(searchTerm) ? "block" : "none";
-  });
+  if (/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(searchTerm)) {
+    swal.fire({
+      text: "영문으로 검색해주세요!",
+      onAfterClose: () => {
+        searchInput.value = "";
+      },
+    });
+  } else {
+    movieCards.forEach((card) => {
+      const title = card.querySelector(".movieTitle").textContent.toLowerCase();
+      card.style.display = title.includes(searchTerm) ? "block" : "none";
+    });
+  }
 });
 
 // scrollUP
