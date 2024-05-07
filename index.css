@@ -16,6 +16,7 @@ body {
   text-align: center;
   justify-content: center;
   background-color: var(--header-bg);
+  border-bottom: var(--border-bt);
 }
 
 .pageTitle {
@@ -153,14 +154,17 @@ body {
   width: 70px;
   height: 70px;
   border-radius: 50px;
-  border: none;
-  background-color: var(--scroll-bg);
-  color: var(--scroll-ft);
+  background-color: var(--scroll-btn);
+  color: white;
   position: fixed;
   bottom: 30px;
   right: 20px;
   cursor: pointer;
   z-index: 4;
+}
+
+.scroll {
+  color: var(--scroll-arrow);
 }
 
 /* switch style */
@@ -177,6 +181,10 @@ body {
   cursor: pointer;
 }
 
+.switch {
+  color: var(--switch-btn);
+}
+
 /* dark mode style */
 :root {
   --header-bg: black;
@@ -191,23 +199,25 @@ body {
   --input-bg: white;
   --input-ft: black;
   --h1-ft: white;
-  --scroll-bg: black;
-  --scroll-ft: white;
+  --scroll-btn: black;
+  --scroll-arrow: white;
 }
 
 :root.dark {
-  --header-bg: rgb(32, 32, 32);
+  --header-bg: #000000;
+  --border-bt: 1px solid rgba(255, 255, 255, 0.522);
   --header-ft: rgb(234, 234, 234);
-  --body-bg: rgba(0, 0, 0);
+  --body-bg: rgb(0, 0, 0);
   --body-ft: rgb(234, 234, 234);
-  --btn-bg: black;
-  --btn-color: white;
+  --btn-bg: rgb(0, 0, 0);
+  --btn-color: rgb(255, 255, 255);
   --btn-border: black;
   --card-bg: rgba(0, 0, 0, 0.4);
   --card-ft: rgb(186, 186, 186);
   --input-bg: black;
   --input-ft: rgb(186, 186, 186);
   --h1-ft: black;
-  --scroll-bg: white;
-  --scroll-ft: black;
+  --switch-btn: rgb(255, 255, 255);
+  --scroll-btn: white;
+  --scroll-arrow: black;
 }
