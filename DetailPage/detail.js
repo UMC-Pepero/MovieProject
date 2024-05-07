@@ -123,21 +123,24 @@ const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const commentInput = document.getElementById("write");
 
+// 로컬스토리지 데이터 불러오기
 function loadComments(movieId) {
   const comments = getComments(movieId);
   generateComment(comments);
 }
 
+// 로컬스토리지에 데이터 저장하기
 function saveComments(movieId, comments) {
   localStorage.setItem(`comments_${movieId}`, JSON.stringify(comments));
 }
 
+//로컬스토리지에서 데이터 가져오기
 function getComments(movieId) {
   const savedComments = localStorage.getItem(`comments_${movieId}`);
   return savedComments ? JSON.parse(savedComments) : [];
 }
 
-let number = 0; //uuid js
+// const randomId = Date.now(); //uuid js
 
 const handleSubmitForm = (event) => {
   event.preventDefault();
@@ -146,8 +149,9 @@ const handleSubmitForm = (event) => {
   const password = passwordInput.value;
   const comment = commentInput.value;
   const rating = selectedRating;
-  const indexBox = document.querySelector(".comment__box");
+  // const indexBox = document.querySelector(".comment__box");
   // const index = indexBox.dataset["index"];
+  const randomId = Date.now().toString();
 
   usernameInput.value = "";
   passwordInput.value = "";
@@ -158,11 +162,8 @@ const handleSubmitForm = (event) => {
     Password: password,
     Review: comment,
     Rating: rating,
-    Index: number++,
+    Id: randomId,
   };
-
-  //로컬스토리지 아이템 갯수 -> 총 댓글 수에 반영하기
-  //  comments.length
 
   loadComments(movieId);
   let comments = getComments(movieId);
@@ -177,16 +178,10 @@ const generateComment = (comments) => {
   const commentBox = document.querySelector(".comment__wrapper");
   commentBox.innerHTML = "";
   let commentDrawn = getComments(movieId, comments);
-  // 함수 실행을 통한 재랜더링 필요
 
   commentDrawn.forEach((element) => {
-    // const test = () => {
-    //   localStorage.getItem(`comments_${movieId}`);
-    //   localStorage.removeItem(`comments_${movieId}.review`);
-    // };
-    console.log();
     commentBox.innerHTML += `
-      <li class="comment__box" data-index=${element.Index}>
+      <li class="comment__box" id=${element.Id}>
         <img
           class="user-image"
           src="https://static.vecteezy.com/system/resources/thumbnails/005/276/776/small/logo-icon-person-on-white-background-free-vector.jpg"
@@ -202,7 +197,7 @@ const generateComment = (comments) => {
           <p>${element.Review}</p>
           <div class="edit-delete" >
             <button class="edit"><i class="fa-solid fa-pen fa-lg"></i></button>
-            <button class="delete" ><i class="fa-regular fa-trash-can fa-lg"></i></i></button>
+            <button class="delete"><i class="fa-regular fa-trash-can fa-lg"></i></i></button>
           </div>
         </section>
         <div class="rate">
@@ -211,44 +206,92 @@ const generateComment = (comments) => {
         </div>
       </li>`;
   });
-  // localStorage.removeItem(comments_${movieId})
 
   //댓글 삭제하기
   const deleteComment = (event) => {
     const li =
       event.target.parentElement.parentElement.parentElement.parentElement;
-    li.remove();
+    let cancelSwitch = Boolean;
 
-    const indexBox = document.querySelector(".comment__box");
-    const deleteIndex = indexBox.getAttribute("data-index");
-    console.log(deleteIndex);
-    console.log(commentDrawn);
-
-    const newComments = [];
     commentDrawn.forEach((element) => {
-      if (element.Index !== deleteIndex) {
-        newComments.push(element); //이 부분 문제
-        console.log(newComments);
+      if (li.getAttribute("id") === String(element.Id)) {
+        const passwordTry = prompt("패스워드를 입력해주세요.");
+        if (passwordTry === element.Password) {
+          cancelSwitch = true;
+          li.remove();
+
+          const newComments = commentDrawn.filter(
+            (element) => element.Id !== li.getAttribute("id")
+          );
+          // console.log({ newComments }); //새로운 배열 확인
+          saveComments(movieId, newComments);
+          alert("삭제되었습니다.");
+          location.reload();
+        } else if (passwordTry === null) {
+          cancelSwitch = false;
+          alert("취소되었습니다.");
+        } else {
+          cancelSwitch = false;
+          alert("비밀번호가 틀렸습니다. 다시 입력해주세요.");
+        }
       }
     });
-
-    localStorage.setItem(comments, newComments); //이 부분 문제
   };
 
   const deleteBtn = document.querySelectorAll(".delete");
   deleteBtn.forEach((element) =>
     element.addEventListener("click", deleteComment)
   );
+
+  //댓글 수정하기
+  const editComment = (e) => {
+    const commentBox = e.target.parentNode.parentNode.parentNode.parentNode;
+    console.log(commentBox);
+    const commentOnStorage = getComments(movieId);
+    let cancelSwitch = Boolean;
+    commentOnStorage.forEach((element) => {
+      if (commentBox.getAttribute("id") === String(element.Id)) {
+        const passwordEditTry = prompt("패스워드를 입력해주세요.");
+        if (passwordEditTry === element.Password) {
+          cancelSwitch = true;
+          element.Review = prompt("새로운 내용을 작성해주세요.");
+        } else {
+          cancelSwitch = false;
+          alert("취소되었습니다.");
+        }
+      }
+    });
+
+    if (cancelSwitch) {
+      saveComments(movieId, commentOnStorage);
+      alert("저장되었습니다.");
+      location.reload();
+    }
+  };
+
+  const editBtn = document.querySelectorAll(".edit");
+  editBtn.forEach((element) => element.addEventListener("click", editComment));
+
+  // document.addEventListener("click", (event) => {
+  //   if (event.target.classList.contains("edit")) {
+  //     const target = event.target;
+  //     console.log(target);
+  //     editComment(target);
+  //   }
+  // });
+
+  //댓글 수 나타내기
+  let commentsCount = getComments(movieId).length;
+  document.querySelector(
+    ".comments__length"
+  ).innerHTML = `( ${commentsCount} )`;
 };
 
-// 4. 페이지가 로드될 때 기존 댓글 불러오기
+// 페이지가 로드될 때 기존 댓글 불러오기
 window.onload = function () {
   generateComment();
 };
 
-//5. 댓글 목록 불러오기
-
-// 고친 부분
 //6. 별점 주기
 const stars = document.querySelectorAll(".star");
 let selectedRating = 0;
@@ -275,5 +318,3 @@ const highlightStars = (value) => {
     }
   });
 };
-
-//댓글 수정하기
