@@ -9,6 +9,7 @@ body {
   width: 100%;
   height: 80px;
   background-color: var(--header-bg);
+  border-bottom: var(--border-btn);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -174,6 +175,31 @@ body {
   color: var(--detail-ft-gray);
 }
 
+.wrtie-btn {
+  color: var(--rvbtn-color);
+}
+
+.comment {
+  color: var(--rvfont-color);
+}
+
+.comment__box {
+  margin-bottom: 30px;
+  border: var(--rvCmt-border);
+}
+
+.edit {
+  color: var(--rvedit-color);
+}
+
+.delete {
+  color: var(--rvedit-color);
+}
+
+.rate {
+  color: var(--rvrate-color);
+}
+
 @media screen and (max-width: 660px) {
 }
 
@@ -230,10 +256,11 @@ body {
 }
 
 :root.dark {
-  --header-bg: rgb(32, 32, 32);
+  --header-bg: rgb(0, 0, 0);
   --header-ft: rgb(234, 234, 234);
   --body-bg: rgba(0, 0, 0);
   --body-ft: rgb(234, 234, 234);
+  --border-btn: 1px solid rgb(177, 177, 177);
   /* switch, scroll */
   --btn-bg: black;
   --btn-color: white;
@@ -245,6 +272,12 @@ body {
   --rvborder: rgba(237, 237, 237, 0.58);
   --rvInput-bg: rgba(0, 0, 0, 0.507);
   --rvInput-ft: white;
-  --rvCmt-bg: #5f5f5f;
+  --rvCmt-bg: rgb(0, 0, 0);
   --rvCmt-ft: white;
+  --rvInput-tc: white;
+  --rvbtn-color: white;
+  --rvfont-color: white;
+  --rvCmt-border: 1px solid rgba(255, 255, 255, 0.635);
+  --rvedit-color: rgb(129, 129, 129);
+  --rvrate-color: white;
 }
