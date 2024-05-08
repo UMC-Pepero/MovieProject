@@ -1,4 +1,5 @@
 @import "./reset.css";
+@import './DetailPage/mode.css';
 
 body {
   background-color: var(--body-bg);
@@ -43,6 +44,7 @@ body {
   align-items: center;
   justify-content: space-between;
   position: relative;
+  border-bottom: var(--border-bt);
 }
 
 .homeIcon {
@@ -196,45 +198,10 @@ body {
   margin-top: 40px;
 }
 
-/* 스크롤 버튼 */
-.scrollBtn {
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  background-color: var(--scroll-btn);
-  color: white;
-  position: fixed;
-  bottom: 30px;
-  right: 20px;
-  cursor: pointer;
-  z-index: 4;
-}
 
-.scroll {
-  color: var(--scroll-arrow);
-}
-
-/* switch style */
-#switchBtn {
-  /* position: absolute;
-  top: 15px;
-  right: 20px; */
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  margin-right: 20px;
-  border-radius: 30px;
-  background-color: var(--btn-bg);
-  color: var(--btn-color);
-  cursor: pointer;
-}
-
-.switch {
-  color: var(--switch-btn);
-}
 
 /* dark mode style */
-:root {
+/* :root {
   --header-bg: black;
   --header-ft: white;
   --body-bg: white;
@@ -268,4 +235,4 @@ body {
   --switch-btn: rgb(255, 255, 255);
   --scroll-btn: white;
   --scroll-arrow: black;
-}
+} */

@@ -269,6 +269,13 @@ const generateComment = (comments) => {
   const passwordInput = document.getElementById("delpasswordInput");
 
   const deleteComment = (event) => {
+    // 모달창 닫기
+    const closeModal = () => {
+      modal.style.display = "none";
+      passwordInput.value = "";
+      commentInput.value = "";
+    };
+
     const li =
       event.target.parentElement.parentElement.parentElement.parentElement;
     let cancelSwitch = Boolean;
@@ -300,10 +307,16 @@ const generateComment = (comments) => {
         modal.querySelector(".close").onclick = () => {
           modal.style.display = "none";
           cancelSwitch = false;
-          alert("취소되었습니다.");
         };
       }
     });
+
+    // 모달 외부 클릭 시 닫기
+    window.onclick = (event) => {
+      if (event.target === modal) {
+        closeModal(); // 모달 닫기
+      }
+    };
   };
 
   const deleteBtn = document.querySelectorAll(".delete");

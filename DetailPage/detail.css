@@ -1,4 +1,6 @@
 @import "/reset.css";
+@import './mode.css';
+@import './comment.css';
 
 body {
   background-color: var(--body-bg);
@@ -13,6 +15,7 @@ body {
   align-items: center;
   justify-content: space-between;
   position: relative;
+  border-bottom: var(--border-bt);
 }
 
 .homeIcon {
@@ -206,8 +209,6 @@ body {
     transition: all ease 0.5s;
     opacity: 50%;
   }
-  
-  
 }
 
 .posterImg {
@@ -276,78 +277,8 @@ body {
   color: var(--rvrate-color);
 }
 
-/* 스크롤 버튼 */
-.scrollBtn {
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  border: none;
-  background-color: var(--scroll-bg);
-  color: var(--scroll-ft);
-  position: fixed;
-  bottom: 30px;
-  right: 20px;
-  cursor: pointer;
-  z-index: 4;
-}
-
-/* switch style */
-#switchBtn {
-  /* position: absolute;
-  top: 15px;
-  right: 30px; */
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  margin-right: 20px;
-  border-radius: 30px;
-  background-color: var(--btn-bg);
-  color: var(--btn-color);
-  cursor: pointer;
-  border: none;
-}
-
-/* dark mode style */
-:root {
-  --header-bg: black;
-  --header-ft: white;
-  --body-bg: white;
-  --body-ft: black;
-  --detail-ft-gray: rgb(199, 199, 199);
-  /* switch, scroll */
-  --btn-bg: white;
-  --btn-color: black;
-  --scroll-bg: black;
-  --scroll-ft: white;
-  /* 리뷰 */
-  --rvtitoe-ft: black;
-  --rvboreder-bottom: rgba(0, 0, 0, 0.3);
-  --rvborder: rgba(0, 0, 0, 0.3);
-  --rvInput-bg: white;
-  --rvInput-ft: black;
-  --rvCmt-bg: #f7f7f7;
-  --rvCmt-ft: black;
-}
-
-:root.dark {
-  --header-bg: rgb(32, 32, 32);
-  --header-ft: rgb(234, 234, 234);
-  --body-bg: rgba(0, 0, 0);
-  --body-ft: rgb(234, 234, 234);
-  /* switch, scroll */
-  --btn-bg: black;
-  --btn-color: white;
-  --scroll-bg: white;
-  --scroll-ft: black;
-  /* 리뷰 */
-  --rvtitoe-ft: white;
-  --rvboreder-bottom: rgba(237, 237, 237, 0.58);
-  --rvborder: rgba(237, 237, 237, 0.58);
-  --rvInput-bg: rgba(0, 0, 0, 0.507);
-  --rvInput-ft: white;
-  --rvCmt-bg: #5f5f5f;
-  --rvCmt-ft: white;
-  --rvInput-tc: white;
+.like {
+  color: var(--like-color);
 }
 
 /* 모달 */
@@ -415,7 +346,7 @@ body {
 
 .delmodal-content {
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 30% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
@@ -445,7 +376,8 @@ body {
 }
 
 .delbtn {
-  margin-left: 300px;
+  display: flex;
+  justify-content: center;
   margin-top: 10px;
 }
 
@@ -501,6 +433,7 @@ body {
   border: 1px solid #1d1d1d;
   font-size: 20px;
   width: 100px;
+  height: 30px;
 }
 
 #cancelBtn {
@@ -509,4 +442,56 @@ body {
   border: 1px solid #1d1d1d;
   font-size: 20px;
   width: 100px;
+  height: 30px;
 }
+
+
+
+/* dark mode style */
+/* :root {
+  --header-bg: black;
+  --header-ft: white;
+  --body-bg: white;
+  --body-ft: black;
+  --detail-ft-gray: rgb(199, 199, 199); */
+  /* switch, scroll */
+  /* --btn-bg: white;
+  --btn-color: black;
+  --scroll-bg: black;
+  --scroll-ft: white; */
+  /* 리뷰 */
+  /* --rvtitoe-ft: black;
+  --rvboreder-bottom: rgba(0, 0, 0, 0.3);
+  --rvborder: rgba(0, 0, 0, 0.3);
+  --rvInput-bg: white;
+  --rvInput-ft: black;
+  --rvCmt-bg: #f7f7f7;
+  --rvCmt-ft: black;
+} */
+
+/* :root.dark {
+  --header-bg: rgb(0, 0, 0);
+  --header-ft: rgb(234, 234, 234);
+  --body-bg: rgba(0, 0, 0);
+  --body-ft: rgb(234, 234, 234);
+  --border-btn: 1px solid rgb(177, 177, 177); */
+  /* switch, scroll */
+  /* --btn-bg: rgb(53, 53, 53);
+  --btn-color: white;
+  --scroll-bg: white;
+  --scroll-ft: black; */
+  /* 리뷰 */
+  /* --rvtitoe-ft: white;
+  --rvboreder-bottom: rgba(237, 237, 237, 0.58);
+  --rvborder: rgba(237, 237, 237, 0.58);
+  --rvInput-bg: rgba(0, 0, 0, 0.507);
+  --rvInput-ft: white;
+  --rvCmt-bg: rgb(0, 0, 0);
+  --rvCmt-ft: white;
+  --rvInput-tc: white;
+  --rvbtn-color: white;
+  --rvfont-color: white;
+  --rvCmt-border: 1px solid rgba(255, 255, 255, 0.635);
+  --rvedit-color: rgb(129, 129, 129);
+  --rvrate-color: white;
+} */
