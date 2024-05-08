@@ -218,12 +218,7 @@ const generateComment = (comments) => {
           </div>
         </section>
         <div class="checkPW">
-        </div>
-        <div class="like">
-          <i class="fa-regular fa-thumbs-up fa-lg"></i>
-          <span>55</span>
-        </div>
-        
+        </div>        
       </li>`;
   });
 

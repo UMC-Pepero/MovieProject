@@ -277,10 +277,6 @@ body {
   color: var(--rvrate-color);
 }
 
-.like {
-  color: var(--like-color);
-}
-
 /* 모달 */
 .modal {
   display: none;
@@ -346,7 +342,7 @@ body {
 
 .delmodal-content {
   background-color: #fefefe;
-  margin: 30% auto;
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
@@ -444,54 +440,3 @@ body {
   width: 100px;
   height: 30px;
 }
-
-
-
-/* dark mode style */
-/* :root {
-  --header-bg: black;
-  --header-ft: white;
-  --body-bg: white;
-  --body-ft: black;
-  --detail-ft-gray: rgb(199, 199, 199); */
-  /* switch, scroll */
-  /* --btn-bg: white;
-  --btn-color: black;
-  --scroll-bg: black;
-  --scroll-ft: white; */
-  /* 리뷰 */
-  /* --rvtitoe-ft: black;
-  --rvboreder-bottom: rgba(0, 0, 0, 0.3);
-  --rvborder: rgba(0, 0, 0, 0.3);
-  --rvInput-bg: white;
-  --rvInput-ft: black;
-  --rvCmt-bg: #f7f7f7;
-  --rvCmt-ft: black;
-} */
-
-/* :root.dark {
-  --header-bg: rgb(0, 0, 0);
-  --header-ft: rgb(234, 234, 234);
-  --body-bg: rgba(0, 0, 0);
-  --body-ft: rgb(234, 234, 234);
-  --border-btn: 1px solid rgb(177, 177, 177); */
-  /* switch, scroll */
-  /* --btn-bg: rgb(53, 53, 53);
-  --btn-color: white;
-  --scroll-bg: white;
-  --scroll-ft: black; */
-  /* 리뷰 */
-  /* --rvtitoe-ft: white;
-  --rvboreder-bottom: rgba(237, 237, 237, 0.58);
-  --rvborder: rgba(237, 237, 237, 0.58);
-  --rvInput-bg: rgba(0, 0, 0, 0.507);
-  --rvInput-ft: white;
-  --rvCmt-bg: rgb(0, 0, 0);
-  --rvCmt-ft: white;
-  --rvInput-tc: white;
-  --rvbtn-color: white;
-  --rvfont-color: white;
-  --rvCmt-border: 1px solid rgba(255, 255, 255, 0.635);
-  --rvedit-color: rgb(129, 129, 129);
-  --rvrate-color: white;
-} */

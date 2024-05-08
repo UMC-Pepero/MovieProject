@@ -21,7 +21,6 @@
   --rvInput-ft: black;
   --rvCmt-bg: #f7f7f7;
   --rvCmt-ft: black;
-  --like-color: black;
 }
 
 :root.dark {
@@ -54,7 +53,6 @@
   --rvCmt-border: 1px solid rgba(255, 255, 255, 0.635);
   --rvedit-color: rgb(129, 129, 129);
   --rvrate-color: white;
-  --like-color: white;
 }
 
 
