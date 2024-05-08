@@ -16,28 +16,57 @@
   </head>
   <body>
     <div id="movieList" class="movie-list">
-      <header class="movieHeader">
+      <!-- <header class="movieHeader">
         <span id="movieIcon" class="material-symbols-outlined"> movie </span>
         <h1 class="pageTitle">영화 추천 리스트</h1>
         <span id="movieIcon" class="material-symbols-outlined"> movie </span>
         <nav>
           <button id="switchBtn">
-            <i class="fa-solid fa-moon fa-2x"></i>
+            <i class="switch fa-solid fa-moon fa-2x"></i>
           </button>
         </nav>
+      </header> -->
+      <header class="headerBar">
+        <span
+          onclick="goHome()"
+          class="homeIcon material-symbols-outlined"
+          style="font-size: 35px; cursor: pointer"
+        >
+          home
+        </span>
+        <div class="pageTitle">
+          <span
+            class="movieIcon1 material-symbols-outlined"
+            style="font-size: 35px"
+          >
+            movie
+          </span>
+          <div class="Home">영화 추천 리스트</div>
+          <span
+            class="movieIcon2 material-symbols-outlined"
+            style="font-size: 35px"
+          >
+            movie
+          </span>
+        </div>
+  
+        <button id="switchBtn">
+          <i class="switch fa-solid fa-moon fa-2x"></i>
+        </button>
       </header>
       <div class="movieSearch-frame">
         <input
           type="search"
           id="searchBar"
           class="movieSearch"
-          placeholder="찾고싶은 영화를 검색해보세요..."
+          placeholder="찾고싶은 영화의 제목을 영문 검색 해보세요!"
+          required
         />
       </div>
       <main class="card-flex" id="cardFlex"></main>
     </div>
     <button class="scrollBtn">
-      <i class="fa-solid fa-arrow-up fa-2x"></i>
+      <i class="scroll fa-solid fa-arrow-up fa-2x"></i>
     </button>
     <script src="tmdb.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>

@@ -1,10 +1,11 @@
 @import "./reset.css";
+@import './DetailPage/mode.css';
 
 body {
   background-color: var(--body-bg);
 }
 
-.movie-list {
+/* .movie-list {
   width: 100%;
   height: 100%;
 }
@@ -16,23 +17,72 @@ body {
   text-align: center;
   justify-content: center;
   background-color: var(--header-bg);
+  border-bottom: var(--border-bt);
+  align-items: center;
 }
 
 .pageTitle {
   font-size: 30px;
   font-weight: 800;
-  margin-top: 30px;
+   margin-top: 30px; 
   margin-left: 20px;
   margin-right: 20px;
+   margin-bottom: 100px; 
   text-align: center;
-  margin-bottom: 100px;
+  
   color: rgb(255, 255, 255);
+  
+}
+*/
+
+/* header bar */
+.headerBar {
+  width: 100%;
+  height: 80px;
+  background-color: var(--header-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  border-bottom: var(--border-bt);
+}
+
+.homeIcon {
+  display: none;
+}
+
+.pageTitle {
+  display: flex;
+  align-items: center;
+}
+
+.movieIcon1 {
+  color: white;
+  margin-left: 28px;
+  margin-right: 20px;
+}
+
+.Home {
+  color: white;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.movieIcon2 {
+  color: white;
+  margin-left: 20px;
+}
+
+.darkMode {
+  color: white;
+  margin-right: 20px;
 }
 
 #movieIcon {
-  margin-top: 30px;
+  /* margin-top: 30px; */
   color: rgb(255, 255, 255);
-}
+  font-size: 35px;
+} 
 
 .movieSearch-frame {
   width: 100%;
@@ -146,64 +196,4 @@ body {
   text-overflow: ellipsis;
   text-transform: uppercase;
   margin-top: 40px;
-}
-
-/* 스크롤 버튼 */
-.scrollBtn {
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  border: none;
-  background-color: black;
-  color: white;
-  position: fixed;
-  bottom: 30px;
-  right: 20px;
-  cursor: pointer;
-  z-index: 4;
-}
-
-/* switch style */
-#switchBtn {
-  position: absolute;
-  top: 17px;
-  right: 30px;
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  border-radius: 30px;
-  background-color: var(--btn-bg);
-  color: var(--btn-color);
-  cursor: pointer;
-}
-
-/* dark mode style */
-:root {
-  --header-bg: black;
-  --header-ft: white;
-  --body-bg: white;
-  --body-ft: black;
-  --btn-bg: white;
-  --btn-color: black;
-  --btn-border: white;
-  --card-bg: white;
-  --card-ft: black;
-  --input-bg: white;
-  --input-ft: black;
-  --h1-ft: white;
-}
-
-:root.dark {
-  --header-bg: #74a2a9;
-  --header-ft: rgb(234, 234, 234);
-  --body-bg: rgb(54, 54, 54);
-  --body-ft: rgb(234, 234, 234);
-  --btn-bg: black;
-  --btn-color: white;
-  --btn-border: black;
-  --card-bg: rgba(0, 0, 0, 0.4);
-  --card-ft: rgb(186, 186, 186);
-  --input-bg: black;
-  --input-ft: rgb(186, 186, 186);
-  --h1-ft: black;
 }

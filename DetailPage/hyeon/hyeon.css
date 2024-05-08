@@ -1,0 +1,278 @@
+@import "/reset.css";
+
+* {
+  font-family: 'GmarketSansMedium';
+}
+
+
+/* header */
+.movieHeader {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: var(--header-bg);
+}
+.pageTitle {
+  font-size: 30px;
+  font-weight: 800;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+  margin-bottom: 100px;
+  color: rgb(255, 255, 255);
+  
+}
+#movieIcon {
+  margin-top: 30px;
+  color: rgb(255, 255, 255);
+}
+
+#container{
+  position: relative;
+}
+
+.movie-list {
+  width: 100%;
+  height: 100%;
+}
+
+.infoContianer {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--info-bg);
+  color: var(--info-ft);
+}
+
+/* section1 & section2 */
+.section1 {
+  width: 50%;
+  padding-right: 10px;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+.section2 {
+  width: 50%;
+  background-position: center;
+  position: relative;
+}
+
+.section1-1 {
+  display: flex;
+  flex-direction: row;
+}
+.section1-2{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1010px){
+  .section1 {
+    width: 80%;
+  }
+  .section1-1 {
+    justify-content: center;
+  }
+  .section1-2 {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0px;
+  }
+  .section2 {
+    display: none;
+  }
+  .infoContianer { 
+    justify-content: center;
+    text-align: center;  
+  }
+  .section1-2 {
+    img {
+      width: 300px;
+      height: 400px;
+    }
+    .movieOverview {
+      margin-top: 20px;
+    }
+  }
+
+  
+}
+@media screen and (max-width: 500px){
+  .section1-1 {
+    font-size: 15px;
+  }
+}
+
+/* section1 */
+/* 상세 디테일 내용 */
+.movieTitle {
+  font-size: 30px;
+  font-weight: bolder;
+  margin-top: 40px;
+  color: var(--h1-ft);
+}
+p {
+  margin-top: 20px;
+}
+.ft-color-gray {
+  color: rgb(175, 175, 175);
+}
+.movieOverview {
+  margin-top: 0;
+  margin-bottom: 40px;
+  line-height: 25px;
+}
+.releaseDate {
+  margin-right: 20px;
+}
+.genres{
+  margin-left: 20px;
+}
+
+/* 포스터 이미지 */
+.posterImg {
+  width: 394px;
+  height: 390px; 
+  margin-right: 20px;
+}
+
+/* section2 */
+/* 백그라운드 이미지 */
+.backImg {
+  width: 100%;
+  mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+.backImg2 {
+  background: rgb(0, 0, 0);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 10px;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+/* 더보기 상세정보 */
+.moreInfoBtn {
+  position: absolute;
+  bottom: 190px;
+  right: 50px;
+  width: 50px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  z-index: 2;
+  color: rgb(183, 183, 183);
+}
+.moreInfoBtn p {
+  width: 40px;
+  margin-top: 7px;
+}
+.moreInfoText {
+  background-color: rgba(125, 125, 125, 0.234); 
+  font-size: 14px;
+  text-align: left;
+  position: absolute;
+  bottom: 20px;
+  right: 65px;
+  width: 25%;
+  padding: 5px 20px 10px 20px;
+  display: none;
+}
+.show {
+  display: block;
+  transition: all 0.5s ease-in-out;
+}
+.moreInfoText p{
+  margin-top: 0px;
+  line-height: 30px;
+  color: rgb(181, 181, 181);
+}
+.homepage {
+  position: inherit;
+  color: rgb(181, 181, 181);
+  margin-left: 10px;
+}
+
+
+/* a링크, 뒤로가기 */
+a {
+  position: absolute;
+    top: 25px;
+    left: 30px;
+  color: white;
+}
+
+/* 스크롤 버튼 */
+.scrollBtn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  border: none;
+  background-color: black;
+  color: white;
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 4;
+}
+
+/* switch style */
+#switchBtn {
+  position: absolute;
+  top: 17px;
+  right: 30px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: var(--btn-bg);
+  color: var(--btn-color);
+  cursor: pointer;
+}
+
+/* dark mode style */
+:root {
+  --header-bg: black;
+  --header-ft: white;
+  --body-bg: white;
+  --body-ft: black;
+  --info-bg: black;
+  --info-ft: white;
+/*  */
+  --btn-bg: white;
+  --btn-color: black;
+  --btn-border: white;
+  --card-bg: white;
+  --card-ft: black;
+  --input-bg: white;
+  --input-ft: black;
+  --h1-ft: white;
+}
+
+:root.dark {
+  --header-bg: black;
+  --header-ft: rgb(234, 234, 234);
+  --body-bg: rgb(54, 54, 54);
+  --body-ft: rgb(234, 234, 234);
+  --info-bg: black;
+  --info-ft: white;
+/*  */
+  --btn-bg: black;
+  --btn-color: white;
+  --btn-border: black;
+  --card-bg: rgba(0, 0, 0, 0.4);
+  --card-ft: rgb(186, 186, 186);
+  --input-bg: black;
+  --input-ft: rgb(186, 186, 186);
+  --h1-ft: black;
+}
+
+/* similar.js */
+.similarContainer {
+  background-color: black;
+}
