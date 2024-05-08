@@ -153,6 +153,19 @@ const handleSubmitForm = (event) => {
   // const index = indexBox.dataset["index"];
   const randomId = Date.now().toString();
 
+  const today = new Date();
+
+  const year = today.getFullYear();
+  const month = ("0" + (today.getMonth() + 1)).slice(-2);
+  const day = ("0" + today.getDate()).slice(-2);
+  const hours = ("0" + today.getHours()).slice(-2);
+  const minutes = ("0" + today.getMinutes()).slice(-2);
+
+  const dateTimeString =
+    year + "-" + month + "-" + day + " " + hours + ":" + minutes;
+  console.log(dateTimeString);
+  console.log(typeof dateTimeString);
+
   usernameInput.value = "";
   passwordInput.value = "";
   commentInput.value = "";
@@ -163,6 +176,7 @@ const handleSubmitForm = (event) => {
     Review: comment,
     Rating: rating,
     Id: randomId,
+    Time: dateTimeString,
   };
 
   loadComments(movieId);
@@ -182,17 +196,20 @@ const generateComment = (comments) => {
   commentDrawn.forEach((element) => {
     commentBox.innerHTML += `
       <li class="comment__box" id=${element.Id}>
+      <section class="profile">
         <img
           class="user-image"
           src="https://static.vecteezy.com/system/resources/thumbnails/005/276/776/small/logo-icon-person-on-white-background-free-vector.jpg"
         />
+        <div class="star-box">
+                <span class="starsIcon material-symbols-outlined" style="font-size: 18px"">kid_star</span>
+                <span class="stars">${element.Rating}</span>
+        </div>
+        </section>
         <section class="comment">
           <div class="userInfo">
               <h4>${element.User}</h4>
-              <div class="star-box">
-                <span class="starsIcon material-symbols-outlined" style="font-size: 18px"">kid_star</span>
-                <span class="stars">${element.Rating}</span>
-              </div>
+              <div class="set-time">${element.Time}</div>
           </div>
           <p>${element.Review}</p>
           <div class="edit-delete" >
@@ -246,7 +263,7 @@ const generateComment = (comments) => {
   //   element.addEventListener("click", deleteComment)
   // );
 
- //댓글 삭제하기 (모달 수정)
+  //댓글 삭제하기 (모달 수정)
   const modal = document.getElementById("delmodal");
   const confirmBtn = document.getElementById("delconfirmBtn");
   const passwordInput = document.getElementById("delpasswordInput");
@@ -254,6 +271,7 @@ const generateComment = (comments) => {
   const deleteComment = (event) => {
     const li =
       event.target.parentElement.parentElement.parentElement.parentElement;
+    let cancelSwitch = Boolean;
 
     commentDrawn.forEach((element) => {
       let cancelSwitch = Boolean;
@@ -376,7 +394,6 @@ const generateComment = (comments) => {
   const editBtn = document.querySelectorAll(".edit");
   editBtn.forEach((element) => element.addEventListener("click", editComment));
 
-
   // document.addEventListener("click", (event) => {
   //   if (event.target.classList.contains("edit")) {
   //     const target = event.target;
@@ -403,7 +420,6 @@ const generateComment = (comments) => {
       document.getElementById("capslock-warning").innerText = "";
     }
   });
-
 };
 
 // 페이지가 로드될 때 기존 댓글 불러오기

@@ -2,9 +2,9 @@
 @import '/DetailPage/detail.css';
 
 main {
-  /* width: 100vw; */
+  width: 100vw;
   height: 100%;
-  padding: 30px 300px;
+  padding: 40px 0px;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -12,8 +12,8 @@ main {
 }
 
 .review__title {
-  /* background-color: antiquewhite; */
-  width: 100%;
+  width: 70%;
+  align-self: center;
   height: 5em;
   border-bottom: 1.5px solid var(--rvboreder-bottom);
   display: flex;
@@ -28,18 +28,14 @@ main {
 }
 
 .comment-make__box {
-  width: 100%;
+  width: 65%;
+  align-self: center;
   height: max-content;
   display: flex;
   align-items: center;
-  padding: 2em 1.5em;
+  padding: 2.5em 1.5em;
   box-sizing: border-box;
   border-radius: 10px;
-}
-
-.comment-write__box {
-  margin-bottom: 10px;
-  padding: 1.5em 0em;
 }
 
 .user-image:first-child {
@@ -52,14 +48,19 @@ main {
   width: 3.5em;
   height: 3.5em;
   border-radius: 50%;
+}
+
+.user-image:first-child {
   margin-right: 1.5em;
 }
 
 .comment-write__box {
-  width: 100%;
+  width: 95%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
+  margin-bottom: 10px;
+  /* padding: 1.5em 0em; */
 }
 
 .id-password__box {
@@ -138,7 +139,8 @@ main {
 }
 
 .comment__wrapper {
-  width: 100%;
+  width: 65%;
+  align-self: center;
   display: grid;
   /* grid-template-rows: repeat(autofill, minmax(5em, 1fr));
   grid-auto-rows: 5em; */
@@ -162,7 +164,7 @@ main {
 }
 
 .comment {
-  width: 100%;
+  width: 90%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -190,12 +192,15 @@ main {
   display: flex;
   /* justify-content: space-between; */
   align-items: center;
+  gap: 10px;
 }
 
 .star-box {
   display: flex;
-  margin-right: 15px;
+  margin-right: 5px;
   align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .userInfo > h4 {
@@ -217,13 +222,11 @@ main {
   height: 20px;
   display: flex;
   margin-top: 5px;
-  margin-left: 5px;
 }
 
 .starsIcon {
   width: 20px;
   height: 20px;
-  margin-left: 30px;
   color: rgb(232, 139, 0);
 }
 
@@ -248,33 +251,103 @@ main {
   display: none;
 }
 
-/* 비밀번호 확인 */
-.checkPW {
- /* margin-right: 20px; */
- /* background-color: black; */
- width: 40%;
-}
-.checkPassword {
-  
-  height: 20px;
-  margin-right: 7px;
-}
-.editBtn {
-  width: 2rem;
-  background-color: rgb(222, 222, 222);
-  height: 30px;
-  border-radius: 10px;
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 0.5em;
+  gap: 10px;
 }
 
-.editText {
-  width: 500px;
-  height: 70px;
-  margin-right: 10px;
+.set-time {
+  font-size: 13px;
+  color: var(--rvboreder-bottom);
 }
 
-.saveBtn {
-  width: 40px;
-  background-color: rgb(222, 222, 222);
-  height: 30px;
-  border-radius: 10px;
+/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px) */
+@media screen and (max-width: 767px) {
+  .review__title {
+    width: 80%;
+  }
+  .comment-make__box {
+    width: 75%;
+  }
+  .comment__wrapper {
+    width: 75%;
+  }
+
+  .user-image {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+  }
+
+  #username,
+  #password {
+    width: 80%;
+    height: 25px;
+  }
+
+  .comment-write__box {
+    width: 75%;
+    padding: 0px;
+  }
+  .comment {
+    width: 70%;
+  }
+  .profile {
+    margin-right: 0px;
+  }
 }
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 0.5em;
+  gap: 10px;
+}
+
+.set-time {
+  font-size: 13px;
+  color: var(--rvboreder-bottom);
+}
+
+/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px) */
+@media screen and (max-width: 767px) {
+  .review__title {
+    width: 80%;
+  }
+  .comment-make__box {
+    width: 75%;
+  }
+  .comment__wrapper {
+    width: 75%;
+  }
+
+  .user-image {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+  }
+
+  #username,
+  #password {
+    width: 80%;
+    height: 25px;
+  }
+
+  .comment-write__box {
+    width: 75%;
+    padding: 0px;
+  }
+  .comment {
+    width: 70%;
+  }
+  .profile {
+    margin-right: 0px;
+  }
+}
+
