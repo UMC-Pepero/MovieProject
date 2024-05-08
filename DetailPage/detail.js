@@ -169,6 +169,8 @@ const handleSubmitForm = (event) => {
   usernameInput.value = "";
   passwordInput.value = "";
   commentInput.value = "";
+  selectedRating = 0;
+  highlightStars(0);
 
   let newComment = {
     User: username,
