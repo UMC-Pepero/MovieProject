@@ -159,6 +159,64 @@ body {
   margin-top: 20px;
 }
 
+@media screen and (max-width: 799px) {
+  .backFrame {
+    display: none;
+  }
+  .backImg {
+    width: 100%;
+  }
+  .mask, .mask2 {
+    width: 100%;
+  }
+  
+  
+}
+@media screen and (max-width: 630px) {
+  .overView-frame {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px; 
+    
+    .detailOverview {
+      width: 450px;
+    }
+  }
+  .movieDetail{
+    height: 600px;
+  }
+  .Detail {
+    background-color: rgb(0, 0, 0);
+    height: 600px;
+  }
+  .detailImg {
+    transition: all ease 0.5s;
+    opacity: 50%;
+  }
+}
+
+@media screen and (max-width: 535px) {
+  .overView-frame {
+    .detailOverview {
+      width: 80%;
+    }
+  }
+  .detailImg {
+    transition: all ease 0.5s;
+    opacity: 50%;
+  }
+  .headerBar {
+    #switchBtn {
+      top: 20px;
+      width: 40px;
+      height: 40px;
+      right: 15px; 
+      transition: all ease 0.1s;
+    }
+  }
+  
+}
+
 .posterImg {
   width: 150px;
   height: 200px;
@@ -224,8 +282,6 @@ body {
 .rate {
   color: var(--rvrate-color);
 }
-
-@media screen and (max-width: 660px) {}
 
 /* 스크롤 버튼 */
 .scrollBtn {

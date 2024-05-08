@@ -159,9 +159,6 @@ main {
   border-radius: 10px;
 }
 
-.comment__box .user-image {
-  width: 5rem;
-}
 
 .comment {
   width: 90%;
@@ -315,39 +312,5 @@ main {
   color: var(--rvboreder-bottom);
 }
 
-/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px) */
-@media screen and (max-width: 767px) {
-  .review__title {
-    width: 80%;
-  }
-  .comment-make__box {
-    width: 75%;
-  }
-  .comment__wrapper {
-    width: 75%;
-  }
 
-  .user-image {
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-  }
-
-  #username,
-  #password {
-    width: 80%;
-    height: 25px;
-  }
-
-  .comment-write__box {
-    width: 75%;
-    padding: 0px;
-  }
-  .comment {
-    width: 70%;
-  }
-  .profile {
-    margin-right: 0px;
-  }
-}
 
