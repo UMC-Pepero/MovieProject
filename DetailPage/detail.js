@@ -291,9 +291,11 @@ const generateComment = (comments) => {
             );
             saveComments(movieId, newComments);
             alert("삭제되었습니다.");
+            passwordInput.value = "";
             location.reload();
           } else {
             cancelSwitch = false;
+            passwordInput.value = "";
             alert("비밀번호가 틀렸습니다. 다시 입력해주세요.");
           }
           modal.style.display = "none";
@@ -422,7 +424,8 @@ const generateComment = (comments) => {
   usernameInput.addEventListener("keyup", function (event) {
     if (event.getModifierState("CapsLock")) {
       // CapsLock이 켜져 있을 때
-      document.getElementById("capslock-warning").innerText = "CapsLock 이 활성화되어있는 상태입니다";
+      document.getElementById("capslock-warning").innerText =
+        "CapsLock 이 활성화되어있는 상태입니다";
     } else {
       // CapsLock이 꺼져 있을 때
       document.getElementById("capslock-warning").innerText = "";

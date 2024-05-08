@@ -63,37 +63,41 @@
 
       <!-- 모달 창 (댓글수정) -->
       <div id="modal" class="modal">
-        <div class="modal-content">
-          <div class="modal-input">
-            <input
-              id="passwordInput"
-              type="password"
-              placeholder="패스워드를 입력하세요."
-            />
-            <textarea
-              id="commentInput"
-              placeholder="수정하실 내용을 입력하세요."
-            ></textarea>
-          </div>
-          <div class="modalbtn">
-            <button id="submitBtn">
-              <span style="color: white">확인</span>
-            </button>
-            <button id="cancelBtn">
-              <span style="color: white">취소</span>
-            </button>
+        <div class="modal-warpper">
+          <div class="modal-content">
+            <div class="modal-input">
+              <input
+                id="passwordInput"
+                type="password"
+                placeholder="패스워드를 입력해주세요."
+              />
+              <textarea
+                id="commentInput"
+                placeholder="수정할 내용을 입력해주세요."
+              ></textarea>
+            </div>
+            <div class="modalbtn">
+              <button id="submitBtn">
+                <span>확인</span>
+              </button>
+              <button id="cancelBtn">
+                <span>취소</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- 모달 창 (댓글삭제) -->
       <div id="delmodal" class="delmodal">
-        <div class="delmodal-content">
-          <span class="close">&times;</span>
-          <p class="close-text">패스워드를 입력해주세요.</p>
-          <div class="delbtn">
-            <input type="password" id="delpasswordInput" />
-            <button id="delconfirmBtn">확인</button>
+        <div class="delmodal-wrapper">
+          <div class="delmodal-content">
+            <span class="close">&times;</span>
+            <p class="close-text">패스워드를 입력해주세요.</p>
+            <div class="delbtn">
+              <input type="password" id="delpasswordInput" />
+              <button id="delconfirmBtn">확인</button>
+            </div>
           </div>
         </div>
       </div>
