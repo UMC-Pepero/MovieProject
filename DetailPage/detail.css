@@ -488,3 +488,7 @@ body {
   font-size: 15px;
   width: 50px;
 }
+
+#switchBtn {
+  margin-right: 45px;
+}
