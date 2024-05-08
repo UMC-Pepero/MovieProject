@@ -1,5 +1,5 @@
-@import '/reset.css';
-@import '/DetailPage/detail.css';
+@import "/reset.css";
+@import "/DetailPage/detail.css";
 
 main {
   width: 100%;
@@ -159,7 +159,6 @@ main {
   border-radius: 10px;
 }
 
-
 .comment {
   width: 90%;
   height: auto;
@@ -175,19 +174,12 @@ main {
 
 .comment > p {
   height: max-content;
-  /* overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical; */
 }
 
 .userInfo {
   height: 20px;
   width: 100%;
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   gap: 10px;
 }
@@ -312,6 +304,3 @@ main {
   font-size: 13px;
   color: var(--rvboreder-bottom);
 }
-
-
-

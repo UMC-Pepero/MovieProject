@@ -1,6 +1,6 @@
 @import "/reset.css";
-@import './mode.css';
-@import './comment.css';
+@import "./mode.css";
+@import "./comment.css";
 
 body {
   background-color: var(--body-bg);
@@ -170,23 +170,22 @@ body {
   .backImg {
     width: 100%;
   }
-  .mask, .mask2 {
+  .mask,
+  .mask2 {
     width: 100%;
   }
-  
-  
 }
 @media screen and (max-width: 630px) {
   .overView-frame {
     display: flex;
     flex-direction: column;
-    margin-top: 20px; 
-    
+    margin-top: 20px;
+
     .detailOverview {
       width: 450px;
     }
   }
-  .movieDetail{
+  .movieDetail {
     height: 600px;
   }
   .Detail {
@@ -280,51 +279,38 @@ body {
 /* 모달 */
 .modal {
   display: none;
-  /* 기본적으로는 숨김 */
   position: fixed;
-  /* 고정 위치 */
   z-index: 1;
-  /* 다른 요소 위에 표시 */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  /* 스크롤 가능 */
   background-color: rgba(0, 0, 0, 0.4);
-  /* 배경색과 투명도 */
 }
 
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto;
-  /* 중앙 정렬 */
   padding: 60px;
   border: 1px solid #888;
   height: 400px;
   width: 500px;
-  /* 모달창 너비 */
 }
 
 #passwordInput {
   margin-bottom: 10px;
   border: 1px solid #ccc;
-  /* 테두리 스타일 지정 */
   padding: 5px;
-  /* 안쪽 여백 지정 */
   border-radius: 4px;
-  /* 테두리 모서리를 둥글게 만듦 */
 }
 
 #commentInput {
   width: 1215px;
   height: 85;
   border: 1px solid #ccc;
-  /* 테두리 스타일 지정 */
   padding: 5px;
-  /* 안쪽 여백 지정 */
   border-radius: 4px;
-  /* 테두리 모서리를 둥글게 만듦 */
 }
 
 .delmodal {
@@ -364,11 +350,8 @@ body {
 
 #delpasswordInput {
   border: 1px solid #1d1d1d;
-  /* 테두리 스타일 지정 */
   padding: 5px;
-  /* 안쪽 여백 지정 */
   border-radius: 10px;
-  /* 테두리 모서리를 둥글게 만듦 */
 }
 
 .delbtn {
