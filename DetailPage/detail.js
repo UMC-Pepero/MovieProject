@@ -353,7 +353,8 @@ const generateComment = (comments) => {
   // 댓글 수정 (모달 수정)
   const editComment = (e) => {
     const commentBox = e.target.parentNode.parentNode.parentNode.parentNode;
-    const commentOnStorage = getComments(movieId);
+    // const commentOnStorage = getComments(movieId);
+
     const modal = document.getElementById("modal");
     const passwordInput = document.getElementById("passwordInput");
     const commentInput = document.getElementById("commentInput");
@@ -372,11 +373,11 @@ const generateComment = (comments) => {
     // 확인 버튼 클릭 시
     submitBtn.onclick = () => {
       const passwordEditTry = passwordInput.value;
-      commentOnStorage.forEach((element) => {
+      commentDrawn.forEach((element) => {
         if (commentBox.getAttribute("id") === String(element.Id)) {
           if (passwordEditTry === element.Password) {
             element.Review = commentInput.value;
-            saveComments(movieId, commentOnStorage);
+            saveComments(movieId, commentDrawn);
             alert("저장되었습니다.");
             closeModal(); // 모달 닫기
             location.reload(); // 페이지 새로고침
