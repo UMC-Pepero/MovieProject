@@ -165,6 +165,9 @@ const handleSubmitForm = (event) => {
   usernameInput.value = "";
   passwordInput.value = "";
   commentInput.value = "";
+  selectedRating = 0;
+  highlightStars(0);
+
 
   let newComment = {
     User: username,
@@ -381,8 +384,10 @@ const saveRating = (rating) => {
 const highlightStars = (value) => {
   stars.forEach((star, index) => {
     if (index < value) {
+      console.log(index, value);
       star.textContent = "★";
     } else {
+      console.log(index, value);
       star.textContent = "☆";
     }
   });
