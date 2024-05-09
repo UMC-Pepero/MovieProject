@@ -165,6 +165,8 @@ const handleSubmitForm = (event) => {
   usernameInput.value = "";
   passwordInput.value = "";
   commentInput.value = "";
+  selectedRating = 0;
+  highlightStars(0);
 
   let newComment = {
     User: username,
@@ -251,9 +253,11 @@ const generateComment = (comments) => {
             );
             saveComments(movieId, newComments);
             alert("삭제되었습니다.");
+            passwordInput.value = "";
             location.reload();
           } else {
             cancelSwitch = false;
+            passwordInput.value = "";
             alert("비밀번호가 틀렸습니다. 다시 입력해주세요.");
           }
           modal.style.display = "none";

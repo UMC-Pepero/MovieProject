@@ -18,7 +18,6 @@ body {
 }
 
 .homeIcon {
-  display: none;
   margin-left: 25px;
   color: var(--border-co);
 }
@@ -30,7 +29,6 @@ body {
 
 .movieIcon1 {
   color: white;
-  margin-left: 28px;
   margin-right: 20px;
 }
 

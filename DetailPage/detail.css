@@ -4,6 +4,7 @@
 
 body {
   background-color: var(--body-bg);
+  width: 100vw;
 }
 
 /* header bar */
@@ -20,7 +21,7 @@ body {
 
 .homeIcon {
   color: white;
-  margin-left: 20px;
+  margin-left: 25px;
 }
 
 .pageTitle {
@@ -188,6 +189,7 @@ body {
   .movieDetail {
     height: 600px;
   }
+
   .Detail {
     background-color: rgb(0, 0, 0);
     height: 600px;
@@ -201,7 +203,9 @@ body {
 @media screen and (max-width: 535px) {
   .overView-frame {
     .detailOverview {
-      width: 80%;
+      width: 70%;
+      align-self: flex-start;
+      text-align: left;
     }
   }
   .detailImg {
@@ -280,37 +284,117 @@ body {
 .modal {
   display: none;
   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
+  align-content: center;
+}
+
+.modal-warpper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto;
-  padding: 60px;
-  border: 1px solid #888;
-  height: 400px;
+  padding: 30px;
+  box-sizing: border-box;
+  justify-self: center;
   width: 500px;
+  height: 400px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-input {
+  height: 100%;
+  width: 100%;
 }
 
 #passwordInput {
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  /* 테두리 스타일 지정 */
   padding: 5px;
-  border-radius: 4px;
+  box-sizing: border-box;
+  /* 안쪽 여백 지정 */
+  display: flex;
+  border-radius: 20px;
+  font-weight: 500;
+  color: var(--rvInput-tc);
+}
+
+/* placeholder 텍스트 위치 변경 */
+#passwordInput::placeholder {
+  padding-left: 8px;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 #commentInput {
-  width: 1215px;
-  height: 85;
-  border: 1px solid #ccc;
-  padding: 5px;
-  border-radius: 4px;
+  resize: none; /* textarea 사이즈 사용자 조정 불가하도록 */
+  display: flex;
+  border-radius: 5px;
+  width: 100%;
+  height: 80%;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  color: var(--rvInput-tc);
+}
+
+/* placeholder 텍스트 위치 변경 */
+#commentInput::placeholder {
+  padding-left: 5px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 767px) {
+  .modal-warpper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .modal-content {
+    margin: 0%;
+    width: 350px;
+    height: 400px;
+    /* justify-self: center;
+    align-self: center; */
+  }
+}
+
+#submitBtn {
+  background-color: var(--mdConfirm);
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  width: 100px;
+  height: 30px;
+}
+
+#cancelBtn {
+  border-radius: 10px;
+  color: var(--mdConfirm);
+  border: 1.5px solid var(--mdConfirm);
+  font-size: 16px;
+  width: 100px;
+  height: 30px;
 }
 
 .delmodal {
@@ -321,17 +405,34 @@ body {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+.delmodal-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .delmodal-content {
   background-color: #fefefe;
-  margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 50%;
+  width: 500px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .delmodal-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .delmodal-content {
+    width: 350px;
+  }
 }
 
 .close {
@@ -349,7 +450,7 @@ body {
 }
 
 #delpasswordInput {
-  border: 1px solid #1d1d1d;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   padding: 5px;
   border-radius: 10px;
 }
@@ -362,64 +463,20 @@ body {
 
 .close-text {
   text-align: center;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 20px;
 }
 
 #delconfirmBtn {
-  background-color: #bd1717;
+  background-color: var(--mdConfirm);
   color: #fefefe;
   margin-left: 10px;
   padding: 3px;
   border-radius: 10px;
-  border: 1px solid #1d1d1d;
   font-size: 15px;
   width: 50px;
 }
 
-.modal-input {
-  height: 400px;
-  width: 500px;
-}
-
-#passwordInput {
-  display: flex;
-  border-radius: 20px;
-  border: 1px solid #1d1d1d;
-  font-weight: bold;
-}
-
-#commentInput {
-  display: flex;
-  height: 80px;
-  border-radius: 5px;
-  width: 500px;
-  height: 350px;
-  border-radius: 10px;
-  border: 1px solid #1d1d1d;
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.modalbtn {
-  float: right;
-  padding-top: 20px;
-}
-
-#submitBtn {
-  background-color: #185ac5;
-  border-radius: 10px;
-  border: 1px solid #1d1d1d;
-  font-size: 20px;
-  width: 100px;
-  height: 30px;
-}
-
-#cancelBtn {
-  background-color: #d70a0a;
-  border-radius: 10px;
-  border: 1px solid #1d1d1d;
-  font-size: 20px;
-  width: 100px;
-  height: 30px;
+#switchBtn {
+  margin-right: 45px;
 }

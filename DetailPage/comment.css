@@ -95,7 +95,7 @@ main {
 
 #username:focus,
 #password:focus {
-  border: 2px solid #2c7be4;
+  border: 2px solid var(--rvInputFocus);
   outline: none;
 }
 
