@@ -159,15 +159,12 @@ const handleSubmitForm = (event) => {
 
   const dateTimeString =
     year + "-" + month + "-" + day + " " + hours + ":" + minutes;
-  console.log(dateTimeString);
-  console.log(typeof dateTimeString);
 
   usernameInput.value = "";
   passwordInput.value = "";
   commentInput.value = "";
   selectedRating = 0;
   highlightStars(0);
-
 
   let newComment = {
     User: username,
@@ -227,16 +224,15 @@ const generateComment = (comments) => {
   const passwordInput = document.getElementById("delpasswordInput");
 
   const deleteComment = (event) => {
+    const li =
+      event.target.parentElement.parentElement.parentElement.parentElement;
+
     // 모달창 닫기
     const closeModal = () => {
       modal.style.display = "none";
       passwordInput.value = "";
       commentInput.value = "";
     };
-
-    const li =
-      event.target.parentElement.parentElement.parentElement.parentElement;
-    let cancelSwitch = Boolean;
 
     commentDrawn.forEach((element) => {
       let cancelSwitch = Boolean;
@@ -259,7 +255,7 @@ const generateComment = (comments) => {
           } else {
             cancelSwitch = false;
             passwordInput.value = "";
-            alert("비밀번호가 틀렸습니다. 다시 입력해주세요.");
+            alert("비밀번호가 틀렸습니다. 다시 입력해 주세요.");
           }
           modal.style.display = "none";
         };
@@ -287,7 +283,7 @@ const generateComment = (comments) => {
   // 댓글 수정 (모달 수정)
   const editComment = (e) => {
     const commentBox = e.target.parentNode.parentNode.parentNode.parentNode;
-    const commentOnStorage = getComments(movieId);
+
     const modal = document.getElementById("modal");
     const passwordInput = document.getElementById("passwordInput");
     const commentInput = document.getElementById("commentInput");
@@ -306,11 +302,11 @@ const generateComment = (comments) => {
     // 확인 버튼 클릭 시
     submitBtn.onclick = () => {
       const passwordEditTry = passwordInput.value;
-      commentOnStorage.forEach((element) => {
+      commentDrawn.forEach((element) => {
         if (commentBox.getAttribute("id") === String(element.Id)) {
           if (passwordEditTry === element.Password) {
             element.Review = commentInput.value;
-            saveComments(movieId, commentOnStorage);
+            saveComments(movieId, commentDrawn);
             alert("저장되었습니다.");
             closeModal(); // 모달 닫기
             location.reload(); // 페이지 새로고침
@@ -344,7 +340,7 @@ const generateComment = (comments) => {
     ".comments__length"
   ).innerHTML = `( ${commentsCount} )`;
 
-  // 캡스락 경고문 (username 에만 반응하게 구현해뒀어요)
+  // 캡스락 경고문 (username에만 반응하게 구현해뒀어요)
   const usernameInput = document.getElementById("username");
 
   usernameInput.addEventListener("keyup", function (event) {
