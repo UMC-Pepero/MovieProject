@@ -72,10 +72,8 @@ searchInput.addEventListener("input", () => {
       text: "영문으로 검색해주세요!",
       onAfterClose: () => {
         searchInput.value = "";
-      }
+      },
     });
-    
-    
   } else {
     movieCards.forEach((card) => {
       const title = card.querySelector(".movieTitle").textContent.toLowerCase();
@@ -83,7 +81,6 @@ searchInput.addEventListener("input", () => {
     });
   }
 });
-
 
 // scrollUP
 const scrollBtn = document.querySelector(".scrollBtn");

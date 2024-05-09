@@ -1,5 +1,5 @@
 @import "./reset.css";
-@import './DetailPage/mode.css';
+@import "./DetailPage/mode.css";
 
 body {
   background-color: var(--body-bg);
@@ -49,10 +49,9 @@ body {
 }
 
 #movieIcon {
-  /* margin-top: 30px; */
   color: rgb(255, 255, 255);
   font-size: 35px;
-} 
+}
 
 .movieSearch-frame {
   width: 100%;

@@ -140,8 +140,6 @@ function getComments(movieId) {
   return savedComments ? JSON.parse(savedComments) : [];
 }
 
-// const randomId = Date.now(); //uuid js
-
 const handleSubmitForm = (event) => {
   event.preventDefault();
 
@@ -149,8 +147,6 @@ const handleSubmitForm = (event) => {
   const password = passwordInput.value;
   const comment = commentInput.value;
   const rating = selectedRating;
-  // const indexBox = document.querySelector(".comment__box");
-  // const index = indexBox.dataset["index"];
   const randomId = Date.now().toString();
 
   const today = new Date();
@@ -169,6 +165,8 @@ const handleSubmitForm = (event) => {
   usernameInput.value = "";
   passwordInput.value = "";
   commentInput.value = "";
+  selectedRating = 0;
+  highlightStars(0);
 
   let newComment = {
     User: username,
@@ -222,43 +220,7 @@ const generateComment = (comments) => {
       </li>`;
   });
 
-  //댓글 삭제하기(기존)
-  // const deleteComment = (event) => {
-  //   const li =
-  //     event.target.parentElement.parentElement.parentElement.parentElement;
-  //   let cancelSwitch = Boolean;
-
-  //   commentDrawn.forEach((element) => {
-  //     if (li.getAttribute("id") === String(element.Id)) {
-  //       const passwordTry = prompt("패스워드를 입력해주세요.");
-  //       if (passwordTry === element.Password) {
-  //         cancelSwitch = true;
-  //         li.remove();
-
-  //         const newComments = commentDrawn.filter(
-  //           (element) => element.Id !== li.getAttribute("id")
-  //         );
-  //         // console.log({ newComments }); //새로운 배열 확인
-  //         saveComments(movieId, newComments);
-  //         alert("삭제되었습니다.");
-  //         location.reload();
-  //       } else if (passwordTry === null) {
-  //         cancelSwitch = false;
-  //         alert("취소되었습니다.");
-  //       } else {
-  //         cancelSwitch = false;
-  //         alert("비밀번호가 틀렸습니다. 다시 입력해주세요.");
-  //       }
-  //     }
-  //   });
-  // };
-
-  // const deleteBtn = document.querySelectorAll(".delete");
-  // deleteBtn.forEach((element) =>
-  //   element.addEventListener("click", deleteComment)
-  // );
-
-  //댓글 삭제하기 (모달 수정)
+  // 댓글 삭제하기 (모달 수정)
   const modal = document.getElementById("delmodal");
   const confirmBtn = document.getElementById("delconfirmBtn");
   const passwordInput = document.getElementById("delpasswordInput");
@@ -321,35 +283,6 @@ const generateComment = (comments) => {
     element.addEventListener("click", deleteComment)
   );
 
-  // 댓글 수정하기 (기존)
-  // const editComment = (e) => {
-  //   const commentBox = e.target.parentNode.parentNode.parentNode.parentNode;
-  //   console.log(commentBox);
-  //   const commentOnStorage = getComments(movieId);
-  //   let cancelSwitch = Boolean;
-  //   commentOnStorage.forEach((element) => {
-  //     if (commentBox.getAttribute("id") === String(element.Id)) {
-  //       const passwordEditTry = prompt("패스워드를 입력해주세요.");
-  //       if (passwordEditTry === element.Password) {
-  //         cancelSwitch = true;
-  //         element.Review = prompt("새로운 내용을 작성해주세요.");
-  //       } else {
-  //         cancelSwitch = false;
-  //         alert("취소되었습니다.");
-  //       }
-  //     }
-  //   });
-
-  //   if (cancelSwitch) {
-  //     saveComments(movieId, commentOnStorage);
-  //     alert("저장되었습니다.");
-  //     location.reload();
-  //   }
-  // };
-
-  // const editBtn = document.querySelectorAll(".edit");
-  // editBtn.forEach((element) => element.addEventListener("click", editComment));
-
   // 댓글 수정 (모달 수정)
   const editComment = (e) => {
     const commentBox = e.target.parentNode.parentNode.parentNode.parentNode;
@@ -405,21 +338,13 @@ const generateComment = (comments) => {
   const editBtn = document.querySelectorAll(".edit");
   editBtn.forEach((element) => element.addEventListener("click", editComment));
 
-  // document.addEventListener("click", (event) => {
-  //   if (event.target.classList.contains("edit")) {
-  //     const target = event.target;
-  //     console.log(target);
-  //     editComment(target);
-  //   }
-  // });
-
-  //댓글 수 나타내기
+  // 댓글 수 나타내기
   let commentsCount = getComments(movieId).length;
   document.querySelector(
     ".comments__length"
   ).innerHTML = `( ${commentsCount} )`;
 
-  //캡스락 경고문 (username 에만 반응하게 구현해뒀어요)
+  // 캡스락 경고문 (username 에만 반응하게 구현해뒀어요)
   const usernameInput = document.getElementById("username");
 
   usernameInput.addEventListener("keyup", function (event) {
@@ -439,7 +364,7 @@ window.onload = function () {
   generateComment();
 };
 
-//6. 별점 주기
+// 6. 별점 주기
 const stars = document.querySelectorAll(".star");
 let selectedRating = 0;
 
