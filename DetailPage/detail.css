@@ -330,7 +330,7 @@ body {
   display: flex;
   border-radius: 20px;
   font-weight: 500;
-  color: var(--rvInput-tc);
+  color: var(--mdRvInnerText);
 }
 
 /* placeholder 텍스트 위치 변경 */
@@ -352,7 +352,7 @@ body {
   font-weight: 500;
   padding: 8px 10px;
   box-sizing: border-box;
-  color: var(--rvInput-tc);
+  color: var(--mdRvInnerText);
 }
 
 /* placeholder 텍스트 위치 변경 */
