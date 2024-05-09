@@ -24,6 +24,7 @@
   --rvInputFocus: #2c7be4;
   /* 리뷰 */
   --mdConfirm: #2c7be4;
+  --mdRvInnerText: rgba(0, 0, 0, 1);
 }
 
 :root.dark {
@@ -56,6 +57,10 @@
   --rvCmt-border: 1px solid rgba(255, 255, 255, 0.635);
   --rvedit-color: rgb(129, 129, 129);
   --rvrate-color: white;
+  --rvInputFocus: #2c7be4;
+  /* 리뷰 */
+  --mdConfirm: #2c7be4;
+  --mdRvInnerText: rgba(0, 0, 0, 1);
 }
 
 /* 스크롤 버튼 */
