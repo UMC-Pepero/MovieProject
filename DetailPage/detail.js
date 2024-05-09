@@ -159,8 +159,6 @@ const handleSubmitForm = (event) => {
 
   const dateTimeString =
     year + "-" + month + "-" + day + " " + hours + ":" + minutes;
-  console.log(dateTimeString);
-  console.log(typeof dateTimeString);
 
   usernameInput.value = "";
   passwordInput.value = "";
